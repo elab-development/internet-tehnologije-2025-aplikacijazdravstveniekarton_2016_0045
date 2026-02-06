@@ -11,14 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pregledi', function (Blueprint $table) {
-            $table->id('idPregleda');
-            $table->timestamps();
-            $table->text('anamneza');
-            $table->string('dijagnoza');
-            $table->date('datumPregleda');
-            $table->string('pregledaoLekar');
-
+        Schema::table('recepts', function (Blueprint $table) {
+             $table->renameColumn('receptIzdao', 'izdaoLekar');
         });
     }
 
@@ -27,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pregledi');
+        Schema::table('recepts', function (Blueprint $table) {
+            //
+        });
     }
 };
