@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
       /*  User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
-        ]);*/
+        ]);*//*
         
          Analiza::create([
            'idAnalize'=>'2',
@@ -78,9 +78,9 @@ class DatabaseSeeder extends Seeder
         'izdaoLekar'=>'Marko Markovic',
 
 
-        ]);
+        ]);*/
         Korisnik::create([
-           'jmbg'=>'1111',
+           'jmbg'=>'123456789',
         'ime'=>'Viktor',
         'prezime'=>'Stojanovic',
         'adresa'=>'Aprilska 12',
@@ -88,11 +88,12 @@ class DatabaseSeeder extends Seeder
         'datumRodjenja'=>'2002-01-01',
         'brojTelefona'=>'066333444',
         'uloga'=>'admin',
+        'password'=>'admin',
 
 
         ]);
         Korisnik::create([
-           'jmbg'=>'2222',
+           'jmbg'=>'22222222',
         'ime'=>'Sima',
         'prezime'=>'Simic',
         'adresa'=>'Januarska 9',
@@ -100,11 +101,12 @@ class DatabaseSeeder extends Seeder
         'datumRodjenja'=>'1970-11-01',
         'brojTelefona'=>'066355555',
         'uloga'=>'lekar',
+        'password'=>'1234',
 
 
         ]);
         Korisnik::create([
-           'jmbg'=>'2223',
+           'jmbg'=>'22222223',
         'ime'=>'Rade',
         'prezime'=>'Radic',
         'adresa'=>'Februarska 122',
@@ -112,11 +114,12 @@ class DatabaseSeeder extends Seeder
         'datumRodjenja'=>'1990-07-01',
         'brojTelefona'=>'066333666',
         'uloga'=>'lekar',
+        'password'=>'1234',
 
 
         ]);
         Korisnik::create([
-           'jmbg'=>'2224',
+           'jmbg'=>'22222224',
         'ime'=>'Marko',
         'prezime'=>'Markovic',
         'adresa'=>'Martovska 8',
@@ -124,11 +127,12 @@ class DatabaseSeeder extends Seeder
         'datumRodjenja'=>'1980-08-01',
         'brojTelefona'=>'066387956',
         'uloga'=>'lekar',
+        'password'=>'1234',
 
 
         ]);
         Korisnik::create([
-           'jmbg'=>'3333',
+           'jmbg'=>'33333333',
         'ime'=>'Bisa',
         'prezime'=>'Bisic',
         'adresa'=>'Oblakovska 8',
@@ -136,11 +140,12 @@ class DatabaseSeeder extends Seeder
         'datumRodjenja'=>'1985-05-06',
         'brojTelefona'=>'066387989',
         'uloga'=>'sestra',
+        'password'=>'1234',
 
 
         ]);
         Korisnik::create([
-           'jmbg'=>'3334',
+           'jmbg'=>'33333334',
         'ime'=>'Bilja',
         'prezime'=>'Biljic',
         'adresa'=>'Novembarska 89',
@@ -148,11 +153,12 @@ class DatabaseSeeder extends Seeder
         'datumRodjenja'=>'1990-07-06',
         'brojTelefona'=>'066007956',
         'uloga'=>'sestra',
+        'password'=>'1234',
 
 
         ]);
         Korisnik::create([
-           'jmbg'=>'4444',
+           'jmbg'=>'44444444',
         'ime'=>'Maja',
         'prezime'=>'Majic',
         'adresa'=>'Majska 1',
@@ -160,11 +166,12 @@ class DatabaseSeeder extends Seeder
         'datumRodjenja'=>'1997-07-26',
         'brojTelefona'=>'065507956',
         'uloga'=>'pacijent',
+        'password'=>'1234',
 
 
         ]);
         Korisnik::create([
-           'jmbg'=>'4445',
+           'jmbg'=>'44444445',
         'ime'=>'Ana',
         'prezime'=>'Anic',
         'adresa'=>'Norveska bb',
@@ -172,21 +179,23 @@ class DatabaseSeeder extends Seeder
         'datumRodjenja'=>'1964-04-09',
         'brojTelefona'=>'069687956',
         'uloga'=>'pacijent',
+        'password'=>'1234',
 
 
         ]);
         Korisnik::create([
-           'jmbg'=>'4446',
+           'jmbg'=>'44444446',
         'ime'=>'Marjan',
-        'prezime'=>'marjanovic',
+        'prezime'=>'Marjanovic',
         'adresa'=>'Liparska 13',
         'email'=>'lipa@gmail.com',
         'datumRodjenja'=>'1948-07-06',
         'brojTelefona'=>'062777956',
         'uloga'=>'pacijent',
+        'password'=>'1234',
 
 
-        ]);
+        ]);/*
 
        Pregled::create([
            'idPregleda'=>'1',
@@ -240,7 +249,7 @@ class DatabaseSeeder extends Seeder
         'izdaoLekar'=>'Marko Markovic',
 
 
-        ]);
+        ]);*/
        
         
         

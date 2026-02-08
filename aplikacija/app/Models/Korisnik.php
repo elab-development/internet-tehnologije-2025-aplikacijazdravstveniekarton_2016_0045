@@ -18,8 +18,14 @@ protected $fillable=[
         'email',
         'datumRodjenja',
         'brojTelefona',
-        'uloga'
+        'uloga',
+        'password'
 
+
+    ];
+    protected $hidden = [
+        'password'
+        
     ];
 
     function analize(){
