@@ -1,13 +1,19 @@
 import React from 'react'
 import OnePregled from './OnePregled'
+import { IoArrowBackCircle } from 'react-icons/io5';
 
 function Pregledi() {
   return (
-     <div className='sviPregledi'>
+    <div>
+         <button className='dugmenazad'> <IoArrowBackCircle />  </button>
+            <h1 className='centriraj'>PREGLEDI</h1>
+     <div className='kartica'>
+      <button  className='dugme'>dodaj novi pregled</button>    
       <OnePregled />
       <OnePregled />
       <OnePregled />
     </div>
+     </div>
   )
 }
 

@@ -4,9 +4,9 @@ import logo from '../images/logojedan.png';
 
 function Prijava() {
   return (
-    <div>
-      <h1>E-ZDRAVSTVENI KARTON</h1>
-        <p> PRIJAVA</p>
+    <div >
+      <h1 className="centrirajtext">E-ZDRAVSTVENI KARTON </h1>
+        <p className="centrirajtext"> PRIJAVA</p>
        
         <form className="prijava" >
            
@@ -19,11 +19,11 @@ function Prijava() {
         <br/>
         
         
-        <button type="submit" >PRIJAVI SE</button>
+        <button type="submit" className='dugme'>PRIJAVI SE</button>
         <br/>
         
       </form>
-      <img src={logo} id="logo"></img>
+      <img src={logo} id="logo" className="slika"></img>
     </div>
   )
 }

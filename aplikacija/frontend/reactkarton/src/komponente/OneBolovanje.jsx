@@ -3,7 +3,7 @@ import React from 'react'
 const OneBolovanje = () => {
   return (
     
-      <div className="kartica">
+      <div className="oneelement">
       <div> <label> DIJAGNOZA: </label>  <label> </label> </div>
       <div> <label> DATUM OD: </label>  <label> </label> </div>
       <div> <label> DATUM DO: </label>  <label> </label> </div>

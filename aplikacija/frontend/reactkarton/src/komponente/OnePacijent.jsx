@@ -2,7 +2,7 @@ import React from 'react'
 
 function OnePacijent() {
   return (
-    <div>
+    <div className='oneelement'>
       <label> IME: </label>  <label> </label> 
       <br/>
        <label> PREZIME: </label>  <label> </label> 

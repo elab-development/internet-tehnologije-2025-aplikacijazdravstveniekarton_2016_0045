@@ -1,20 +1,17 @@
 import React from 'react'
-import logo from '../images/logodva.png';
+import logo from '../images/logojedan.png';
 import OnePacijent from './OnePacijent';
+import NavBar from './NavBar';
 
 function HomePacijent() {
   return (
-    <div>
-      <button type="submit" >Pregledi</button>
-      <button type="submit" >Analize</button>
-      <button type="submit" >Bolovanja</button>
-      <button type="submit" >Uputi</button>
-      <button type="submit" >Recepti</button>
-      <button type="submit" >ODJAVI SE</button>
+    <div >
+      <NavBar/>
+      
 
         <br/>
 
-        <img src={logo} id="logo"></img>
+        <img src={logo} id="logo" className='slikahome' ></img>
         
       <br/>
 <OnePacijent />
