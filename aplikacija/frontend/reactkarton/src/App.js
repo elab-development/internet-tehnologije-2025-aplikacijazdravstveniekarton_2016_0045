@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import Analize from './komponente/Analize';
 import AddAnalize from './komponente/AddAnalize';
@@ -18,11 +18,10 @@ import AddRecept from './komponente/AddRecept';
 import AddPregled from './komponente/AddPregled';
 import AddUput from './komponente/AddUput';
 import NavBar from './komponente/NavBar';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import { HiHome } from 'react-icons/hi';
+
 import HomeAdmin from './komponente/HomeAdmin';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 
 
 function App() {
@@ -30,7 +29,96 @@ function App() {
     
 <div  >
 
-<HomeAdmin/>
+<BrowserRouter>
+      <Routes>
+      
+        <Route
+          path="/"
+          element={
+            <Prijava  />
+          }
+        />
+        <Route
+          path="/HomePacijent"
+          element={
+            <HomePacijent />
+          }
+        />
+        <Route
+          path="/HomeMedOsoblje"
+          element={
+            <HomeMedOsoblje/>
+          }
+        />
+        <Route
+          path="/HomeAdmin"
+          element={
+            <HomeAdmin />
+          }
+        />
+        <Route
+          path="/Pregledi"
+          element={
+            <Pregledi />
+          }
+        />
+        <Route
+          path="/Recepti"
+          element={
+            <Recepti />
+          }
+        />
+        <Route
+          path="/Uputi"
+          element={
+            <Uputi />
+          }
+        />
+        <Route
+          path="/Analize"
+          element={
+            <Analize />
+          }
+        />
+        <Route
+          path="/Bolovanja"
+          element={
+            <Bolovanja />
+          }
+        />
+        <Route
+          path="/AddAnalize"
+          element={
+            <AddAnalize />
+          }
+        />
+        <Route
+          path="/AddPregled"
+          element={
+            <AddPregled />
+          }
+        />
+        <Route
+          path="/AddUput"
+          element={
+            <AddUput />
+          }
+        />
+        <Route
+          path="/AddRecept"
+          element={
+            <AddRecept />
+          }
+        />
+        <Route
+          path="/AddBolovanje"
+          element={
+            <AddBolovanje />
+          }
+        />
+        
+       </Routes>
+   </BrowserRouter>
 </div>
   );
 }
