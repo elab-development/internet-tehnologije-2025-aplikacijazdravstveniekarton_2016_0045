@@ -7,9 +7,7 @@ function AddAnalize() {
   return (
     <div>
       <NavBar/>
-<button className="dugmenazad">
-    <IoArrowBackCircle />
-</button>
+
       <h1 className='centriraj'>Kreiraj analizu</h1>
       <form action= "submit" method="POST" className="forma">
         <label>Rezultat:</label>

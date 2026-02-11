@@ -13,13 +13,7 @@ function HomeMedOsoblje() {
               <img src={logo} id="logo" className="slika"></img>
               <br/>
 
-      <form action= "submit" >
-        <label>Unesi JMBG pacijenta:</label>
-        <input type="text" name = "Unesi JMBG pacijenta:" /> 
-         
-<button type="submit" >PRONAĐI</button>       
-        
-      </form>        
+             
       
      <OnePacijent />
       <br/> 

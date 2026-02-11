@@ -7,9 +7,7 @@ function AddUput() {
   return (
     <div>
         <NavBar/>
-<button className="dugmenazad">
-    <IoArrowBackCircle />
-</button>
+
       <h1 className='centriraj'>Kreiraj uput</h1>
       <form action= "submit" method="POST" className="forma">
         <label>Uput za:</label>

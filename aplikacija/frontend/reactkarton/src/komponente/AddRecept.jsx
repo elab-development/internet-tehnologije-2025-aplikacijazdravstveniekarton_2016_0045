@@ -7,9 +7,7 @@ function AddRecept() {
   return (
     <div>
         <NavBar/>
-<button className="dugmenazad">
-    <IoArrowBackCircle />
-</button>
+
       <h1 className='centriraj'>Kreiraj recept</h1>
       <form action= "submit" method="POST" className="forma">
         <label>Lek:</label>

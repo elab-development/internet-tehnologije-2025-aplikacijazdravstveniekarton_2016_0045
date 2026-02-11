@@ -7,9 +7,7 @@ function AddBolovanje() {
   return (
     <div>
         <NavBar/>
-<button className="dugmenazad">
-    <IoArrowBackCircle />
-</button>
+
       <h1 className='centriraj'>Kreiraj bolovanje</h1>
       <form action= "submit" method="POST" className="forma">
         <label>Datum od:</label>

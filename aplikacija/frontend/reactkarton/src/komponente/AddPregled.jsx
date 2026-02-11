@@ -7,9 +7,7 @@ function AddPregled() {
   return (
     <div>
         <NavBar/>
-<button className="dugmenazad">
-    <IoArrowBackCircle />
-</button>
+
       <h1 className='centriraj'>Kreiraj pregled</h1>
       <form action= "submit" method="POST" className="forma">
         <label>Anamneza:</label>
