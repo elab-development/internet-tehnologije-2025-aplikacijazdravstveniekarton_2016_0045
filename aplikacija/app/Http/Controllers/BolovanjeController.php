@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Bolovanje;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Resources\BolovanjeResource;
+use App\Models\Korisnik;
 
 class BolovanjeController extends Controller
 {
@@ -13,10 +15,20 @@ class BolovanjeController extends Controller
      */
     public function index()
     {
-         $bolovanja = Bolovanje::all();
-
-        return $bolovanja;
+         $bolovanjes = Bolovanje::all();
+  return response()->json(BolovanjeResource::collection($bolovanjes));
+       
     }
+
+    public function korisnikovabolovanja($id){
+
+     // $korisnikova= Korisnik::find($id);
+       $bolovanja = Bolovanje::where('korisnik_id', $id)->get();
+     
+return $bolovanja;
+
+
+      } 
 
     /**
      * Show the form for creating a new resource.
@@ -29,42 +41,41 @@ class BolovanjeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function addbolovanje(Request $request)
     {
-        $validator = Validator::make($request->all(),[
-            'idBolovanja'=>'required|string',
-        'datumOd'=>'required|date',
-        'datumDo'=>'required|date',
-        'dijagnoza'=>'required|string',
-        'izdaoLekar'=>'required|string',
-             
-        ]); 
-         if($validator->fails())
-        return response()->json($validator->errors());
+ $request->validate([
+        'id' => 'required',
+        'datumOd' => 'required',
+        'datumDo' => 'required',
+        'dijagnoza' => 'required',
+        'izdaoLekar' => 'required',
+        'korisnik_id' => 'required',
+    ]);
 
-        $bolovanje = Bolovanje::create([ 'idBolovanja'=>$request->idBolovanja,
-                                           'datumOd'=>$request->datumOd,
-                                          'datumDo'=>$request->datumDo,
-                                          'dijagnoza'=>$request->dijagnoza,
-                                           'izdaoLekar'=>$request->izdaoLekar,
-            
-                                        
-                                        ]);
-
-       return response()->json(['Bolovanje je kreirano uspesno.', new BolovanjeResource($bolovanje) ]);
+    $novo = Bolovanje::create([
+        'id' => $request->id,
+        'datumOd' => $request->datumOd,
+        'datumDo' => $request->datumDo,
+        'dijagnoza' => $request->dijagnoza,
+         'izdaoLekar' => $request->izdaoLekar,
+        'korisnik_id' => $request->korisnik_id,
         
+    ]);
+
+    return response()->json($novo);
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show($idBolovanja)
+    public function show($id)
     {
-        $bolovanje=Bolovanje::find($idBolovanja);
-        if(is_null($idBolovanja))
+        $bolovanjes=Bolovanje::find($id);
+        if(is_null($bolovanjes))
             return response()->json('Nije pronadjeno bolovanje', 404);
        
-        return $bolovanje;
+        return response()->json(new BolovanjeResource($bolovanjes));
     }
 
     /**

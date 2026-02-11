@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Uput;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Resources\UputResource;
+use App\Models\Korisnik;
 
 class UputController extends Controller
 {
@@ -13,9 +15,42 @@ class UputController extends Controller
      */
     public function index()
     {
-         $uput = Uputi::all();
+         $uputs = Uput::all();
 
-        return $uputi;
+        return response()->json(UputResource::collection($uputs));
+    }
+    public function korisnikoviuputi($id){
+
+      $korisnikovi= Korisnik::find($id);
+       $uputi = Uput::where('korisnik_id', $id)->get();
+     
+return $uputi;
+
+
+      } 
+
+
+       public function adduput(Request $request)
+    {
+ $request->validate([
+        'id' => 'required',
+        'uputZa' => 'required',
+        'datumUputa' => 'required',
+        'izdaoLekar' => 'required',
+        'korisnik_id' => 'required',
+    ]);
+
+    $novo = Bolovanje::create([
+        'id' => $request->id,
+        'uputZa' => $request->uputZa,
+        'datumUputa' => $request->datumUputa,
+        'izdaoLekar' => $request->izdaoLekar,
+        'korisnik_id' => $request->korisnik_id,
+        
+    ]);
+
+    return response()->json($novo);
+
     }
 
     /**
@@ -56,13 +91,14 @@ class UputController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Uput $uput)
+    public function show($id)
     {
-       $uput=Uput::find($uputId);
-        if(is_null($uputId))
+       $uputs=Uput::find($id);
+        if(is_null($uputs))
             return response()->json('Nije pronadjen uput', 404);
        
-        return $uput;
+        return response()->json(new UputResource($uputs));
+        
     }
 
     /**

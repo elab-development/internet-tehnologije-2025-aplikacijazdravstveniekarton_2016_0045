@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Recept;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Resources\ReceptResource;
+use App\Models\Korisnik;
 
 class ReceptController extends Controller
 {
@@ -13,9 +15,41 @@ class ReceptController extends Controller
      */
     public function index()
     {
-         $recepti = Recept::all();
+         $recepts = Recept::all();
 
-        return $recepti;
+        return response()->json(ReceptResource::collection($recepts));
+    }
+
+    public function korisnikovirecepti($id){
+
+      $korisnikovi= Korisnik::find($id);
+       $recepti = Recept::where('korisnik_id', $id)->get();
+     
+return $recepti;
+
+
+      } 
+       public function addrecept(Request $request)
+    {
+ $request->validate([
+        'id' => 'required',
+        'lekovi' => 'required',
+        'datumIzdavanja' => 'required',
+            'izdaoLekar' => 'required',
+        'korisnik_id' => 'required',
+    ]);
+
+    $novo = Bolovanje::create([
+        'id' => $request->id,
+        'lekovi' => $request->lekovi,
+        'datumIzdavanja' => $request->datumIzdavanja,
+           'izdaoLekar' => $request->izdaoLekar,
+        'korisnik_id' => $request->korisnik_id,
+        
+    ]);
+
+    return response()->json($novo);
+
     }
 
     /**
@@ -55,13 +89,14 @@ class ReceptController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($idRecepta)
+    public function show($id)
     {
-        $recept=Recept::find($idRecepta);
-        if(is_null($idRecepta))
+        $recepts=Recept::find($id);
+        if(is_null($recepts))
             return response()->json('Nije pronadjen recept', 404);
        
-        return $recept;
+         return response()->json(new ReceptResource($recepts));
+        
     }
 
     /**

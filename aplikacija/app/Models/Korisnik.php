@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Korisnik;
 
 class Korisnik extends Model
 {
@@ -11,7 +12,7 @@ class Korisnik extends Model
     use HasFactory;
 
 protected $fillable=[
-        'jmbg',
+        'id',
         'ime',
         'prezime',
         'adresa',

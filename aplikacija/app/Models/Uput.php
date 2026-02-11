@@ -11,10 +11,11 @@ class Uput extends Model
     use HasFactory;
 
     protected $fillable=[
-        'idUputa',
+        'id',
         'uputZa',
         'datumUputa',
-        'izdaoLekar'
+        'izdaoLekar',
+        'korisnik_id'
     ];
     function korisnik(){
         return $this->belongsTo(Korisnik::class);

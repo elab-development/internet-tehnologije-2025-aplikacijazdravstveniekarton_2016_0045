@@ -12,7 +12,7 @@ class Pregled extends Model
 
 
     protected $fillable=[
-        'idPregleda',
+        'id',
         'anamneza',
         'dijagnoza',
         'datumPregleda',

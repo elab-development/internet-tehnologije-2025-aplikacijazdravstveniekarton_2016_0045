@@ -11,7 +11,7 @@ class Bolovanje extends Model
     use HasFactory;
 
 protected $fillable=[
-        'idBolovanja',
+        'id',
         'datumOd',
         'datumDo',
         'dijagnoza',

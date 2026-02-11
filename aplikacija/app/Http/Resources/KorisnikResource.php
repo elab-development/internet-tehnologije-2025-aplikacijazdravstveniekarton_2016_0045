@@ -5,6 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+
 class KorisnikResource extends JsonResource
 {
     /**
@@ -15,15 +16,14 @@ class KorisnikResource extends JsonResource
     public function toArray(Request $request): array
     {
         return[
-'jmbg'=>$this->jmbg,            
-                                        'ime'=>$this->ime,
-                                        'prezime'=>$this->prezime,
-                                        'password'=>$this->password,
-                                        'email'=>$this->email,
-                                        'adresa'=>$this->adresa,
-                                        'brojTelefona'=>$this->brojTelefona,
-                                        'uloga'=>$this->uloga,
-                                        'datumRodjenja'=>$this->datumRodjenja,
+                                        'id'=>$this->resource->id,            
+                                        'ime'=>$this->resource->ime,
+                                        'prezime'=>$this->resource->prezime,
+                                        'email'=>$this->resource->email,
+                                        'adresa'=>$this->resource->adresa,
+                                        'brojTelefona'=>$this->resource->brojTelefona,
+                                        'uloga'=>$this->resource->uloga,
+                                        'datumRodjenja'=>$this->resource->datumRodjenja, 
         ];
     }
 }

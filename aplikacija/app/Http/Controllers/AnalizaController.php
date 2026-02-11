@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Analiza;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Resources\AnalizaResource;
+use App\Models\Korisnik;
 
 class AnalizaController extends Controller
 {
@@ -12,10 +14,13 @@ class AnalizaController extends Controller
      * Display a listing of the resource.
      */
     public function index()
+           
     {
-         $analize = Analiza::all();
+        
+         $analizas = Analiza::all();
+         
 
-        return $analize;
+         return response()->json(AnalizaResource::collection($analizas));
     }
 
     /**
@@ -29,63 +34,69 @@ class AnalizaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-         $validator = Validator::make($request->all(),[
-             'idAnalize'=>'required|string',
-        'rezultat'=>'required|string',
-        'datumAnalize'=>'required|date',
-        'izdaoLekar'=>'required|string',
-          
-        ]); 
-         if($validator->fails())
-        return response()->json($validator->errors());
+   
+            
+      public function korisnikoveanalize($id){
 
-        $korisnik = Korisnik::create([ 'idAnalize'=>$request->idAnalize,
-                                       'rezultat'=>$request->rezultat,
-                                       'datumAnalize'=>$request->datumAnalize,
-                                       'izdaoLekar'=>$request->izdaoLekar,
+     // $korisnikove= Korisnik::find($id);
+       $analize = Analiza::where('korisnik_id', $id)->get();
+     
+
+return $analize;
+
+
+      }                                  
                                         
-                                        ]);
 
-       return response()->json(['Analiza je kreirana uspesno.', new AnalizaResource($analiza) ]);
-        
-    
-    }
+      
 
     /**
      * Display the specified resource.
      */
-    public function show(Analiza $idAnalize)
+    public function show($id)
     {
-        $analiza=Analiza::find($idAnalize);
-        if(is_null($idAnalize))
-            return response()->json('Nije pronadjena analiza', 404);
+        $analizas=Analiza::find($id) ;
+       if(is_null($analizas))
+            return response()->json('Nije pronadjen pregled', 404);
        
-        return $analiza;
+      
+         return response()->json(new AnalizaResource($analizas));
+    }
+    public function addanaliza(Request $request)
+    {
+ $request->validate([
+        'id' => 'required',
+        'rezultat' => 'required',
+        'datumAnalize' => 'required',
+         'izdaoLekar' => 'required',
+        'korisnik_id' => 'required',
+    ]);
+
+    $novo = Analiza::create([
+        'id' => $request->id,
+        'rezultat' => $request->rezultat,
+        'datumAnalize' => $request->datumAnalize,
+        'izdaoLekar' => $request->izdaoLekar,
+        'korisnik_id' => $request->korisnik_id,
+        
+    ]);
+
+    return response()->json($novo);
+
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Analiza $analiza)
-    {
-        //
-    }
+    
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Analiza $analiza)
-    {
-        //
-    }
+    
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Analiza $analiza)
-    {
-        //
-    }
+    
 }

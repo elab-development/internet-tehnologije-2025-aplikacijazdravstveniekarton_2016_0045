@@ -11,7 +11,7 @@ class Recept extends Model
     use HasFactory;
 
     protected $fillable=[
-        'idRecepta',
+        'id',
         'lekovi',
         'datumIzdavanja',
         'izdaoLekar'

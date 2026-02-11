@@ -26,61 +26,67 @@ class DatabaseSeeder extends Seeder
       /*  User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
-        ]);*//*
+        ]);*/
         
          Analiza::create([
-           'idAnalize'=>'2',
+           'id'=>'2',
         'rezultat'=>'Covid negativan',
         'datumAnalize'=>'2022-08-07',
         'izdaoLekar'=>'Sima Simic',
+        'korisnik_id'=>'44444444',
 
 
         ]);
         Analiza::create([
-           'idAnalize'=>'3',
+           'id'=>'3',
         'rezultat'=>'Covid pozitivan',
         'datumAnalize'=>'2020-12-11',
         'izdaoLekar'=>'Rade Radic',
+        'korisnik_id'=>'44444444',
 
 
         ]);
         Analiza::create([
-           'idAnalize'=>'1',
+           'id'=>'1',
         'rezultat'=>'Covid negativan',
         'datumAnalize'=>'2016-02-02',
         'izdaoLekar'=>'Marko Markovic',
+        'korisnik_id'=>'44444444',
         ]);
 
 
         Bolovanje::create([
-           'idBolovanja'=>'1',
+           'id'=>'1',
         'datumOd'=>'2019-03-04',
         'datumDo'=>'2019-03-09',
         'dijagnoza'=>'Grip',
         'izdaoLekar'=>'Rade Radic',
+        'korisnik_id'=>'44444444',
 
 
         ]);
         Bolovanje::create([
-           'idBolovanja'=>'2',
+           'id'=>'2',
         'datumOd'=>'2020-12-11',
         'datumDo'=>'2020-12-30',
         'dijagnoza'=>'Covid 19',
         'izdaoLekar'=>'Rade Radic',
+        'korisnik_id'=>'44444444',
 
 
         ]);
         Bolovanje::create([
-           'idBolovanja'=>'3',
+           'id'=>'3',
         'datumOd'=>'2023-03-30',
         'datumDo'=>'2023-04-09',
         'dijagnoza'=>'Dijareja',
         'izdaoLekar'=>'Marko Markovic',
+        'korisnik_id'=>'44444444',
 
 
-        ]);*/
+        ]);
         Korisnik::create([
-           'jmbg'=>'123456789',
+           'id'=>'123456789',
         'ime'=>'Viktor',
         'prezime'=>'Stojanovic',
         'adresa'=>'Aprilska 12',
@@ -93,7 +99,7 @@ class DatabaseSeeder extends Seeder
 
         ]);
         Korisnik::create([
-           'jmbg'=>'22222222',
+           'id'=>'22222222',
         'ime'=>'Sima',
         'prezime'=>'Simic',
         'adresa'=>'Januarska 9',
@@ -106,7 +112,7 @@ class DatabaseSeeder extends Seeder
 
         ]);
         Korisnik::create([
-           'jmbg'=>'22222223',
+           'id'=>'22222223',
         'ime'=>'Rade',
         'prezime'=>'Radic',
         'adresa'=>'Februarska 122',
@@ -119,7 +125,7 @@ class DatabaseSeeder extends Seeder
 
         ]);
         Korisnik::create([
-           'jmbg'=>'22222224',
+           'id'=>'22222224',
         'ime'=>'Marko',
         'prezime'=>'Markovic',
         'adresa'=>'Martovska 8',
@@ -132,7 +138,7 @@ class DatabaseSeeder extends Seeder
 
         ]);
         Korisnik::create([
-           'jmbg'=>'33333333',
+           'id'=>'33333333',
         'ime'=>'Bisa',
         'prezime'=>'Bisic',
         'adresa'=>'Oblakovska 8',
@@ -145,7 +151,7 @@ class DatabaseSeeder extends Seeder
 
         ]);
         Korisnik::create([
-           'jmbg'=>'33333334',
+           'id'=>'33333334',
         'ime'=>'Bilja',
         'prezime'=>'Biljic',
         'adresa'=>'Novembarska 89',
@@ -158,7 +164,7 @@ class DatabaseSeeder extends Seeder
 
         ]);
         Korisnik::create([
-           'jmbg'=>'44444444',
+           'id'=>'44444444',
         'ime'=>'Maja',
         'prezime'=>'Majic',
         'adresa'=>'Majska 1',
@@ -171,7 +177,7 @@ class DatabaseSeeder extends Seeder
 
         ]);
         Korisnik::create([
-           'jmbg'=>'44444445',
+           'id'=>'44444445',
         'ime'=>'Ana',
         'prezime'=>'Anic',
         'adresa'=>'Norveska bb',
@@ -184,9 +190,9 @@ class DatabaseSeeder extends Seeder
 
         ]);
         Korisnik::create([
-           'jmbg'=>'44444446',
-        'ime'=>'Marjan',
-        'prezime'=>'Marjanovic',
+           'id'=>'44444446',
+        'ime'=>'Teo',
+        'prezime'=>'Teic',
         'adresa'=>'Liparska 13',
         'email'=>'lipa@gmail.com',
         'datumRodjenja'=>'1948-07-06',
@@ -195,61 +201,67 @@ class DatabaseSeeder extends Seeder
         'password'=>'1234',
 
 
-        ]);/*
+        ]);
 
        Pregled::create([
-           'idPregleda'=>'1',
+           'id'=>'1',
         'anamneza'=>'Kijavica i temperatura',
         'dijagnoza'=>'Virusno oboljenje',
         'datumPregleda'=>'2016-02-02',
         'pregledaoLekar'=>'Marko Markovic',
+        'korisnik_id'=>'44444444',
 
 
         ]);
         Pregled::create([
-           'idPregleda'=>'2',
+           'id'=>'2',
         'anamneza'=>'Bol u stomaku',
         'dijagnoza'=>'Dijareja',
         'datumPregleda'=>'2023-3-30',
         'pregledaoLekar'=>'Marko Markovic',
+        'korisnik_id'=>'44444444',
 
 
         ]);
         Pregled::create([
-           'idPregleda'=>'3',
+           'id'=>'3',
         'anamneza'=>'Ima kijavicu i bol u grlu',
         'dijagnoza'=>'Grip',
         'datumPregleda'=>'2025-07-05',
         'pregledaoLekar'=>'Sima Simic',
+        'korisnik_id'=>'44444444',
 
 
         ]);
 
         Recept::create([
-           'idRecepta'=>'1',
+           'id'=>'1',
         'lekovi'=>'Brufen',
         'datumIzdavanja'=>'2016-02-02',
         'izdaoLekar'=>'Marko Markovic',
+        'korisnik_id'=>'44444444',
 
 
         ]);
         Recept::create([
-           'idRecepta'=>'2',
+           'id'=>'2',
         'lekovi'=>'Smekta',
         'datumIzdavanja'=>'2023-03-30',
         'izdaoLekar'=>'Marko Markovic',
+        'korisnik_id'=>'44444444',
 
 
         ]);
 
         Uput::create([
-           'idUputa'=>'1',
+           'id'=>'1',
         'uputZa'=>'laboratoriju',
         'datumUputa'=>'2016-02-02',
         'izdaoLekar'=>'Marko Markovic',
+        'korisnik_id'=>'44444444',
 
 
-        ]);*/
+        ]);
        
         
         

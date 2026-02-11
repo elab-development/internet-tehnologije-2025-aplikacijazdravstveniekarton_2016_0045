@@ -15,7 +15,7 @@ class BolovanjeResource extends JsonResource
     public function toArray(Request $request): array
     {
         return[
-'idBolovanja'=>$this->idBolovanja,
+
   'datumOd'=>$this->datumOd,
 'datumDo'=>$this->datumDo,
 'dijagnoza'=>$this->dijagnoza,

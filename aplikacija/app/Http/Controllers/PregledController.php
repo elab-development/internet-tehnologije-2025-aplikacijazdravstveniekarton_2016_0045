@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Pregled;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Resources\PregledResource;
+use App\Models\Korisnik;
 
 class PregledController extends Controller
 {
@@ -13,10 +15,44 @@ class PregledController extends Controller
      */
     public function index()
     {
-         $pregledi = Pregled::all();
+         $pregleds = Pregled::all();
 
-        return $pregledi;
+        return response()->json(PregledResource::collection($pregleds));
     }
+     public function addpregled(Request $request)
+    {
+ $request->validate([
+        'id' => 'required',
+        'anamneza' => 'required',
+        'dijagnoza' => 'required',
+        'datumPregleda' => 'required',
+        'pregledaoLekar' => 'required',
+        'korisnik_id' => 'required',
+    ]);
+
+    $novo = Bolovanje::create([
+        'id' => $request->id,
+        'anamneza' => $request->anamneza,
+        'dijagnoza' => $request->dijagnoza,
+        'datumPregleda' => $request->datumPregleda,
+         'pregledaoLekar' => $request->PregledaoLekar,
+        'korisnik_id' => $request->korisnik_id,
+        
+    ]);
+
+    return response()->json($novo);
+
+    }
+
+    public function korisnikovipregledi($id){
+
+      $korisnikovi= Korisnik::find($id);
+       $pregledi = Pregled::where('korisnik_id', $id)->get();
+     
+return $pregledi;
+
+
+      } 
 
     /**
      * Show the form for creating a new resource.
@@ -57,13 +93,13 @@ class PregledController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($idPregleda)
+    public function show($id)
     {
-        $pregled=Pregled::find($idPregleda);
-        if(is_null($idPregleda))
+        $pregleds=Pregled::find($id);
+        if(is_null($pregleds))
             return response()->json('Nije pronadjen pregled', 404);
        
-        return $pregled;
+        return response()->json(new PregledResource($pregleds));
     }
 
     /**
@@ -79,15 +115,7 @@ class PregledController extends Controller
      */
     public function update(Request $request, Pregled $pregled)
     {
-        $validatedData = $request->validate([
-            'anamneza'=>'required|string',
-        'dijagnoza'=>'required|string',
-        'datumPregleda'=>'required|date',
-        'pregledaoLekar'=>'required|string',
-        ]);
-        $pregled->update($validatedData);
-        return response()->json("PREGLED JE ZAVRŠEN");
-        //masovno dodeljivanje
+        
     }
 
     /**
