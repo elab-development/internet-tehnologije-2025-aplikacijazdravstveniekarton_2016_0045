@@ -6,11 +6,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens; 
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasApiTokens,HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -18,8 +19,15 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        
+        'id',
+        'ime',
+        'prezime',
+        'adresa',
         'email',
+        'datumRodjenja',
+        'brojTelefona',
+        'uloga',
         'password',
     ];
 
@@ -32,6 +40,21 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+     function analize(){
+        return $this->hasMany(Analiza::class);
+    }
+    function bolovanja(){
+        return $this->hasMany(Bolovanje::class);
+    }
+    function pregledi(){
+        return $this->hasMany(Pregled::class);
+    }
+    function recepti(){
+        return $this->hasMany(Recept::class);
+    }
+    function uputi(){
+        return $this->hasMany(Uput::class);
+    }
 
     /**
      * Get the attributes that should be cast.

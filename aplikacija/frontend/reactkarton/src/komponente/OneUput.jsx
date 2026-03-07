@@ -1,11 +1,11 @@
 import React from 'react'
 
-const OneUput = () => {
+const OneUput = (uput) => {
   return (
     <div className="oneelement">
-      <div> <label> UPUT ZA: </label>  <label></label> </div>
-      <div> <label> DATUM UPUTA: </label>  <label> </label> </div>
-      <div> <label> IZDAO LEKAR: </label>  <label> </label> </div>
+      <div> <label> UPUT ZA: </label>  <label>{uput.uputZa}</label> </div>
+      <div> <label> DATUM UPUTA: </label>  <label> {uput.datumUputa}</label> </div>
+      <div> <label> IZDAO LEKAR: </label>  <label> {uput.izdaoLekar}</label> </div>
       
     </div>
   )

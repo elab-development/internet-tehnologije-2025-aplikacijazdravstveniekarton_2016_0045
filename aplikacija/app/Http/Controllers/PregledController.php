@@ -6,7 +6,8 @@ use App\Models\Pregled;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\PregledResource;
-use App\Models\Korisnik;
+use App\Models\User;
+use Illuminate\Support\Facades\Validator;
 
 class PregledController extends Controller
 {
@@ -19,35 +20,41 @@ class PregledController extends Controller
 
         return response()->json(PregledResource::collection($pregleds));
     }
-     public function addpregled(Request $request)
+    
+       
+    
+ public function addpregled(Request $request)
     {
- $request->validate([
-        'id' => 'required',
+ $validator= Validator::make($request->all(),[
+        
+         
         'anamneza' => 'required',
         'dijagnoza' => 'required',
-        'datumPregleda' => 'required',
+        'datumPregleda' => 'required|date',
         'pregledaoLekar' => 'required',
-        'korisnik_id' => 'required',
+        'user_id' => 'required',
     ]);
+    if($validator->fails())
+        return response()->json(['message' => 'Greska!']);
 
-    $novo = Bolovanje::create([
-        'id' => $request->id,
+    $nov = Pregled::create([
+        
         'anamneza' => $request->anamneza,
         'dijagnoza' => $request->dijagnoza,
         'datumPregleda' => $request->datumPregleda,
-         'pregledaoLekar' => $request->PregledaoLekar,
-        'korisnik_id' => $request->korisnik_id,
+        'pregledaoLekar' => $request->pregledaoLekar,
+        'user_id' => $request->user_id,
         
     ]);
-
-    return response()->json($novo);
+    return response()->json(['message' => 'Uspesno dodat pregled!',new PregledResource($nov)]);
 
     }
 
+
     public function korisnikovipregledi($id){
 
-      $korisnikovi= Korisnik::find($id);
-       $pregledi = Pregled::where('korisnik_id', $id)->get();
+     
+       $pregledi = Pregled::where('user_id', $id)->get();
      
 return $pregledi;
 
@@ -78,7 +85,7 @@ return $pregledi;
          if($validator->fails())
         return response()->json($validator->errors());
 
-        $korisnik = Korisnik::create(['idPregleda'=>$request->idPregleda,
+        $pregled = Pregled::create(['idPregleda'=>$request->idPregleda,
                                       'anamneza'=>$request->anamneza,
                                      'dijagnoza'=>$request->dijagnoza,
                                      'datumPregleda'=>$request->datumPregleda,

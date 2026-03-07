@@ -6,7 +6,8 @@ use App\Models\Bolovanje;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\BolovanjeResource;
-use App\Models\Korisnik;
+use App\Models\User;
+use Illuminate\Support\Facades\Validator;
 
 class BolovanjeController extends Controller
 {
@@ -22,8 +23,8 @@ class BolovanjeController extends Controller
 
     public function korisnikovabolovanja($id){
 
-     // $korisnikova= Korisnik::find($id);
-       $bolovanja = Bolovanje::where('korisnik_id', $id)->get();
+     
+       $bolovanja = Bolovanje::where('user_id', $id)->get();
      
 return $bolovanja;
 
@@ -43,26 +44,28 @@ return $bolovanja;
      */
     public function addbolovanje(Request $request)
     {
- $request->validate([
-        'id' => 'required',
-        'datumOd' => 'required',
-        'datumDo' => 'required',
-        'dijagnoza' => 'required',
-        'izdaoLekar' => 'required',
-        'korisnik_id' => 'required',
+ $validator= Validator::make($request->all(),[
+        
+        'dijagnoza' => 'required|string|max:255',
+        'datumOd' => 'required|date',
+        'datumDo' => 'required|date',
+         'izdaoLekar' => 'required|string|max:255',
+        'user_id' => 'required',
     ]);
+    if($validator->fails())
+        return response()->json(['message' => 'Greska!']);
 
     $novo = Bolovanje::create([
-        'id' => $request->id,
+        
+        'dijagnoza' => $request->dijagnoza,
         'datumOd' => $request->datumOd,
         'datumDo' => $request->datumDo,
-        'dijagnoza' => $request->dijagnoza,
-         'izdaoLekar' => $request->izdaoLekar,
-        'korisnik_id' => $request->korisnik_id,
+        'izdaoLekar' => $request->izdaoLekar,
+        'user_id' => $request->user_id,
         
     ]);
 
-    return response()->json($novo);
+    return response()->json(['message' => 'Uspesno dodato bolovanje!',new BolovanjeResource($novo)]);
 
     }
 

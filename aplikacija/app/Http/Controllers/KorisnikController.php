@@ -20,35 +20,7 @@ class KorisnikController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-     public function addkorisnik(Request $request)
-    {
- $request->validate([
-        'id' => 'required',
-        'ime' => 'required',
-        'prezime' => 'required',
-        'adresa' => 'required',
-        'email' => 'required',
-        'datumRodjenja' => 'required',
-        'brojTelefona' => 'required',
-        'uloga' => 'required',
-        'password' => 'required',
-
-    ]);
-
-    $novo = Bolovanje::create([
-        'id' => $request->id,
-        'ime' => $request->ime,
-        'prezime' => $request->prezime,
-        'adresa' => $request->adresa,
-         'email' => $request->email,
-        'datumRodjenja' => $request->datumRodjenja,
-        'brojTelefona' => $request->brojTelefona,
-        'password' => $request->korisnik_id,
-    ]);
-
-    return response()->json($novo);
-
-    }
+    
     public function create()
     {
         //
@@ -87,7 +59,7 @@ class KorisnikController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request ,$id)
+   /* public function update(Request $request ,$id)
        {
          $korisnikupdate=Korisnik::find($id);
          $validatedData = $request->validate([
@@ -104,6 +76,12 @@ class KorisnikController extends Controller
         return response()->json("PODACI O KORISNIKU SE AŽURIRANI");
         
     }
+
+       
+
+    return response()->json(['message' => 'Uspesno dodata analiza!',new AnalizaResource($nova)]);
+
+    }*/
 
     /**
      * Remove the specified resource from storage.

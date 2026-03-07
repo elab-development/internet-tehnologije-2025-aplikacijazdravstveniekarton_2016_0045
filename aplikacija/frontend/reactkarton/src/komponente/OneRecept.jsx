@@ -1,11 +1,11 @@
 import React from 'react'
 
-const OneRecept = () => {
+const OneRecept = (recept) => {
   return (
     <div class name="oneelement">
-      <div> <label> LEK: </label>  <label> </label> </div>
-      <div> <label> DATUM IZDAVANJE: </label>  <label></label> </div>
-      <div> <label> IZDAO LEKAR: </label>  <label></label> </div>
+      <div> <label> LEK: </label>  <label>{recept.lek} </label> </div>
+      <div> <label> DATUM IZDAVANJA: </label>  <label>{recept.datumIzdavanja}</label> </div>
+      <div> <label> IZDAO LEKAR: </label>  <label>{recept.izdaoLekar}</label> </div>
 
     </div>
   )

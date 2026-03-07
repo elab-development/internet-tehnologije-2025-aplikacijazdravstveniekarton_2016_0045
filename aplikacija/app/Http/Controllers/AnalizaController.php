@@ -6,7 +6,8 @@ use App\Models\Analiza;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\AnalizaResource;
-use App\Models\Korisnik;
+use App\Models\User;
+use Illuminate\Support\Facades\Validator;
 
 class AnalizaController extends Controller
 {
@@ -38,8 +39,8 @@ class AnalizaController extends Controller
             
       public function korisnikoveanalize($id){
 
-     // $korisnikove= Korisnik::find($id);
-       $analize = Analiza::where('korisnik_id', $id)->get();
+     
+       $analize = Analiza::where('user_id', $id)->get();
      
 
 return $analize;
@@ -62,28 +63,35 @@ return $analize;
       
          return response()->json(new AnalizaResource($analizas));
     }
+
+
     public function addanaliza(Request $request)
     {
- $request->validate([
-        'id' => 'required',
-        'rezultat' => 'required',
-        'datumAnalize' => 'required',
-         'izdaoLekar' => 'required',
-        'korisnik_id' => 'required',
+ $validator= Validator::make($request->all(),[
+        
+        'rezultat' => 'required|string|max:255',
+        'datumAnalize' => 'required|date',
+         'izdaoLekar' => 'required|string|max:255',
+        'user_id' => 'required',
     ]);
+    if($validator->fails())
+        return response()->json(['message' => 'Greska!']);
 
-    $novo = Analiza::create([
-        'id' => $request->id,
+    $nova = Analiza::create([
+        
         'rezultat' => $request->rezultat,
         'datumAnalize' => $request->datumAnalize,
         'izdaoLekar' => $request->izdaoLekar,
-        'korisnik_id' => $request->korisnik_id,
+        'user_id' => $request->user_id,
         
     ]);
 
-    return response()->json($novo);
+    return response()->json(['message' => 'Uspesno dodata analiza!',new AnalizaResource($nova)]);
 
     }
+
+
+   
 
     /**
      * Show the form for editing the specified resource.

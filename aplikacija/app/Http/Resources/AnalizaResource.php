@@ -19,6 +19,7 @@ class AnalizaResource extends JsonResource
  'rezultat'=>$this->rezultat,
  'datumAnalize'=>$this->datumAnalize,
  'izdaoLekar'=>$this->izdaoLekar,
+ 'user_id'=>$this->user_id,
 
         ];
                                        

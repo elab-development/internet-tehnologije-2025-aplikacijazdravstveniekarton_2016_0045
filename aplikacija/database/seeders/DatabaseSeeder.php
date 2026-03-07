@@ -12,6 +12,7 @@ use App\Models\Pregled;
 use App\Models\Recept;
 use App\Models\Uput;
 
+
 class DatabaseSeeder extends Seeder
 {
     use WithoutModelEvents;
@@ -28,12 +29,12 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);*/
         
-         Analiza::create([
+        Analiza::create([
            'id'=>'2',
         'rezultat'=>'Covid negativan',
         'datumAnalize'=>'2022-08-07',
         'izdaoLekar'=>'Sima Simic',
-        'korisnik_id'=>'44444444',
+        'user_id'=>'44444444',
 
 
         ]);
@@ -42,7 +43,7 @@ class DatabaseSeeder extends Seeder
         'rezultat'=>'Covid pozitivan',
         'datumAnalize'=>'2020-12-11',
         'izdaoLekar'=>'Rade Radic',
-        'korisnik_id'=>'44444444',
+        'user_id'=>'44444444',
 
 
         ]);
@@ -51,7 +52,7 @@ class DatabaseSeeder extends Seeder
         'rezultat'=>'Covid negativan',
         'datumAnalize'=>'2016-02-02',
         'izdaoLekar'=>'Marko Markovic',
-        'korisnik_id'=>'44444444',
+        'user_id'=>'44444444',
         ]);
 
 
@@ -61,7 +62,7 @@ class DatabaseSeeder extends Seeder
         'datumDo'=>'2019-03-09',
         'dijagnoza'=>'Grip',
         'izdaoLekar'=>'Rade Radic',
-        'korisnik_id'=>'44444444',
+        'user_id'=>'44444444',
 
 
         ]);
@@ -71,7 +72,7 @@ class DatabaseSeeder extends Seeder
         'datumDo'=>'2020-12-30',
         'dijagnoza'=>'Covid 19',
         'izdaoLekar'=>'Rade Radic',
-        'korisnik_id'=>'44444444',
+        'user_id'=>'44444444',
 
 
         ]);
@@ -81,10 +82,10 @@ class DatabaseSeeder extends Seeder
         'datumDo'=>'2023-04-09',
         'dijagnoza'=>'Dijareja',
         'izdaoLekar'=>'Marko Markovic',
-        'korisnik_id'=>'44444444',
+        'user_id'=>'44444444',
 
 
-        ]);
+        ]);/*
         Korisnik::create([
            'id'=>'123456789',
         'ime'=>'Viktor',
@@ -201,7 +202,7 @@ class DatabaseSeeder extends Seeder
         'password'=>'1234',
 
 
-        ]);
+        ]);*/
 
        Pregled::create([
            'id'=>'1',
@@ -209,7 +210,7 @@ class DatabaseSeeder extends Seeder
         'dijagnoza'=>'Virusno oboljenje',
         'datumPregleda'=>'2016-02-02',
         'pregledaoLekar'=>'Marko Markovic',
-        'korisnik_id'=>'44444444',
+        'user_id'=>'44444444',
 
 
         ]);
@@ -219,7 +220,7 @@ class DatabaseSeeder extends Seeder
         'dijagnoza'=>'Dijareja',
         'datumPregleda'=>'2023-3-30',
         'pregledaoLekar'=>'Marko Markovic',
-        'korisnik_id'=>'44444444',
+        'user_id'=>'44444444',
 
 
         ]);
@@ -229,7 +230,7 @@ class DatabaseSeeder extends Seeder
         'dijagnoza'=>'Grip',
         'datumPregleda'=>'2025-07-05',
         'pregledaoLekar'=>'Sima Simic',
-        'korisnik_id'=>'44444444',
+        'user_id'=>'44444444',
 
 
         ]);
@@ -239,7 +240,7 @@ class DatabaseSeeder extends Seeder
         'lekovi'=>'Brufen',
         'datumIzdavanja'=>'2016-02-02',
         'izdaoLekar'=>'Marko Markovic',
-        'korisnik_id'=>'44444444',
+        'user_id'=>'44444444',
 
 
         ]);
@@ -248,7 +249,7 @@ class DatabaseSeeder extends Seeder
         'lekovi'=>'Smekta',
         'datumIzdavanja'=>'2023-03-30',
         'izdaoLekar'=>'Marko Markovic',
-        'korisnik_id'=>'44444444',
+        'user_id'=>'44444444',
 
 
         ]);
@@ -258,12 +259,129 @@ class DatabaseSeeder extends Seeder
         'uputZa'=>'laboratoriju',
         'datumUputa'=>'2016-02-02',
         'izdaoLekar'=>'Marko Markovic',
-        'korisnik_id'=>'44444444',
+        'user_id'=>'44444444',
 
 
         ]);
+        /*
        
-        
+        User::create([
+           'id'=>'123456789',
+        'ime'=>'Viktor',
+        'prezime'=>'Stojanovic',
+        'adresa'=>'Aprilska 12',
+        'email'=>'amk@gmail.com',
+        'datumRodjenja'=>'2002-01-01',
+        'brojTelefona'=>'066333444',
+        'uloga'=>'admin',
+        'password'=>'admin',
+
+
+        ]);
+        User::create([
+           'id'=>'22222222',
+        'ime'=>'Sima',
+        'prezime'=>'Simic',
+        'adresa'=>'Januarska 9',
+        'email'=>'ahgjka@gmail.com',
+        'datumRodjenja'=>'1970-11-01',
+        'brojTelefona'=>'066355555',
+        'uloga'=>'lekar',
+        'password'=>'1234',
+
+
+        ]);
+        User::create([
+           'id'=>'22222223',
+        'ime'=>'Rade',
+        'prezime'=>'Radic',
+        'adresa'=>'Februarska 122',
+        'email'=>'qysbdms@gmail.com',
+        'datumRodjenja'=>'1990-07-01',
+        'brojTelefona'=>'066333666',
+        'uloga'=>'lekar',
+        'password'=>'1234',
+
+
+        ]);
+        User::create([
+           'id'=>'22222224',
+        'ime'=>'Marko',
+        'prezime'=>'Markovic',
+        'adresa'=>'Martovska 8',
+        'email'=>'uahdnbd@gmail.com',
+        'datumRodjenja'=>'1980-08-01',
+        'brojTelefona'=>'066387956',
+        'uloga'=>'lekar',
+        'password'=>'1234',
+
+
+        ]);
+        User::create([
+           'id'=>'33333333',
+        'ime'=>'Bisa',
+        'prezime'=>'Bisic',
+        'adresa'=>'Oblakovska 8',
+        'email'=>'bibi@gmail.com',
+        'datumRodjenja'=>'1985-05-06',
+        'brojTelefona'=>'066387989',
+        'uloga'=>'sestra',
+        'password'=>'1234',
+
+
+        ]);
+        User::create([
+           'id'=>'33333334',
+        'ime'=>'Bilja',
+        'prezime'=>'Biljic',
+        'adresa'=>'Novembarska 89',
+        'email'=>'tyio@gmail.com',
+        'datumRodjenja'=>'1990-07-06',
+        'brojTelefona'=>'066007956',
+        'uloga'=>'sestra',
+        'password'=>'1234',
+
+
+        ]);
+        User::create([
+           'id'=>'44444444',
+        'ime'=>'Maja',
+        'prezime'=>'Majic',
+        'adresa'=>'Majska 1',
+        'email'=>'mmmmmm@gmail.com',
+        'datumRodjenja'=>'1997-07-26',
+        'brojTelefona'=>'065507956',
+        'uloga'=>'pacijent',
+        'password'=>'1234',
+
+
+        ]);
+        User::create([
+           'id'=>'44444445',
+        'ime'=>'Ana',
+        'prezime'=>'Anic',
+        'adresa'=>'Norveska bb',
+        'email'=>'annna@gmail.com',
+        'datumRodjenja'=>'1964-04-09',
+        'brojTelefona'=>'069687956',
+        'uloga'=>'pacijent',
+        'password'=>'1234',
+
+
+        ]);
+        User::create([
+           'id'=>'44444446',
+        'ime'=>'Teo',
+        'prezime'=>'Teic',
+        'adresa'=>'Liparska 13',
+        'email'=>'lipa@gmail.com',
+        'datumRodjenja'=>'1948-07-06',
+        'brojTelefona'=>'062777956',
+        'uloga'=>'pacijent',
+        'password'=>'1234',
+
+
+        ]);*/
         
 
         

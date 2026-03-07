@@ -6,7 +6,8 @@ use App\Models\Recept;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\ReceptResource;
-use App\Models\Korisnik;
+use App\Models\User;
+use Illuminate\Support\Facades\Validator;
 
 class ReceptController extends Controller
 {
@@ -22,33 +23,37 @@ class ReceptController extends Controller
 
     public function korisnikovirecepti($id){
 
-      $korisnikovi= Korisnik::find($id);
-       $recepti = Recept::where('korisnik_id', $id)->get();
+      
+       $recepti = Recept::where('user_id', $id)->get();
      
 return $recepti;
 
 
       } 
-       public function addrecept(Request $request)
+       
+        
+    public function addrecept(Request $request)
     {
- $request->validate([
-        'id' => 'required',
+ $validator= Validator::make($request->all(),[
+                
         'lekovi' => 'required',
-        'datumIzdavanja' => 'required',
+        'datumIzdavanja' => 'required|date',
             'izdaoLekar' => 'required',
-        'korisnik_id' => 'required',
+        'user_id' => 'required',
     ]);
+    if($validator->fails())
+        return response()->json(['message' => 'Greska!']);
 
-    $novo = Bolovanje::create([
-        'id' => $request->id,
+    $nov = Recept::create([
+        
+        
         'lekovi' => $request->lekovi,
         'datumIzdavanja' => $request->datumIzdavanja,
-           'izdaoLekar' => $request->izdaoLekar,
-        'korisnik_id' => $request->korisnik_id,
+        'izdaoLekar' => $request->izdaoLekar,
+        'user_id' => $request->user_id,
         
     ]);
-
-    return response()->json($novo);
+    return response()->json(['message' => 'Uspesno dodat recept!',new ReceptResource($nov)]);
 
     }
 
@@ -75,7 +80,7 @@ return $recepti;
          if($validator->fails())
         return response()->json($validator->errors());
 
-        $korisnik = Korisnik::create([ 'idRecepta'=>$request->idRecepta,
+        $recept = Recept::create([ 'idRecepta'=>$request->idRecepta,
                                        'lekovi'=>$request->lekovi,
                                        'datumIzdavanja'=>$request->datumIzdavanja,
                                         'izdaoLekar'=>$request->izdaoLekar,

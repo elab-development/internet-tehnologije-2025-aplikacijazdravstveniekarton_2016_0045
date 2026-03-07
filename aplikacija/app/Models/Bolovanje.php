@@ -11,14 +11,14 @@ class Bolovanje extends Model
     use HasFactory;
 
 protected $fillable=[
-        'id',
+        'user_id',
         'datumOd',
         'datumDo',
         'dijagnoza',
         'izdaoLekar'
     ];
 
-function korisnik(){
-        return $this->belongsTo(Korisnik::class);
+function user(){
+        return $this->belongsTo(User::class);
     }
 }

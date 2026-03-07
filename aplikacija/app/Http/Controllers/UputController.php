@@ -6,7 +6,8 @@ use App\Models\Uput;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\UputResource;
-use App\Models\Korisnik;
+use App\Models\User;
+use Illuminate\Support\Facades\Validator;
 
 class UputController extends Controller
 {
@@ -21,8 +22,8 @@ class UputController extends Controller
     }
     public function korisnikoviuputi($id){
 
-      $korisnikovi= Korisnik::find($id);
-       $uputi = Uput::where('korisnik_id', $id)->get();
+      
+       $uputi = Uput::where('user_id', $id)->get();
      
 return $uputi;
 
@@ -30,26 +31,30 @@ return $uputi;
       } 
 
 
-       public function adduput(Request $request)
+      
+        
+      public function adduput(Request $request)
     {
- $request->validate([
-        'id' => 'required',
+ $validator= Validator::make($request->all(),[
+              
         'uputZa' => 'required',
         'datumUputa' => 'required',
         'izdaoLekar' => 'required',
-        'korisnik_id' => 'required',
+        'user_id' => 'required',
     ]);
+    if($validator->fails())
+        return response()->json(['message' => 'Greska!']);
 
-    $novo = Bolovanje::create([
-        'id' => $request->id,
+    $nov = Uput::create([
+        
+        
         'uputZa' => $request->uputZa,
         'datumUputa' => $request->datumUputa,
         'izdaoLekar' => $request->izdaoLekar,
-        'korisnik_id' => $request->korisnik_id,
+        'user_id' => $request->user_id,
         
     ]);
-
-    return response()->json($novo);
+    return response()->json(['message' => 'Uspesno dodat uput!',new UputResource($nov)]);
 
     }
 
@@ -77,7 +82,7 @@ return $uputi;
          if($validator->fails())
         return response()->json($validator->errors());
 
-        $korisnik = Korisnik::create(['idUputa'=>$request->idUputa,
+        $uput = Uput::create(['idUputa'=>$request->idUputa,
                                       'uputZa'=>$request->uputZa,
                                        'datumUputa'=>$request->datumUputa,
                                        'izdaoLekar'=>$request->izdaoLekar,

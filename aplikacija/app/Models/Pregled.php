@@ -12,13 +12,13 @@ class Pregled extends Model
 
 
     protected $fillable=[
-        'id',
+        'user_id',
         'anamneza',
         'dijagnoza',
         'datumPregleda',
         'pregledaoLekar'
     ];
-    function korisnik(){
-        return $this->belongsTo(Korisnik::class);
+    function user(){
+        return $this->belongsTo(User::class);
     }
 }
