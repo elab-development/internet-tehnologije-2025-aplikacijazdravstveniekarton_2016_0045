@@ -9,6 +9,7 @@ use App\Http\Resources\AnalizaResource;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 
+
 class AnalizaController extends Controller
 {
     /**

@@ -16,6 +16,7 @@ class AuthController extends Controller
       public function register(Request $request) 
     {
         $validator = Validator::make($request->all(),[
+            'id'=>'required',
 
             'ime' => 'required|string|max:255',
             'email' => 'required|string|max:255|email|unique:users',
@@ -33,6 +34,7 @@ class AuthController extends Controller
             return response()->json([$validator->errors(), 'message' => "Greska!"]);
 
         $user= User::create([
+            'id' => $request->id,
             'ime' => $request->ime,
             'email' => $request->email,
             'password' => $request->password,         
@@ -52,12 +54,12 @@ class AuthController extends Controller
 
     public function login(Request $request) {
         if(!Auth::attempt($request->only('email', 'password')))
-            return response()->json(['message' => 'Kredencijali nisu ispravni !'], 401);
+            return response()->json(['success'=>false,'message' => 'Kredencijali nisu ispravni !'], 401);
         
         $user = User::where('email', $request['email'])->firstOrFail();
         $token = $user->createToken('auth_token')->plainTextToken;
         
-        return response()->json(['access_token' => $token, 'token_type' => 'Bearer']);
+        return response()->json(['success'=>true,'access_token' => $token, 'token_type' => 'Bearer']);
     }
 
  function logout(){

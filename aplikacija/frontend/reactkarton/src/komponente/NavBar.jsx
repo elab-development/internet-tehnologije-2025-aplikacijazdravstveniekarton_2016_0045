@@ -1,9 +1,40 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
 
 function NavBar() {
+
+
+  function handleLogout(){
+let config = {
+      method: "post",
+      url: "http://127.0.0.1:8000/api/logout",
+      headers: {
+         Authorization: "Bearer " +  window.sessionStorage.getItem("auth_token"),
+      },
+    };
+
+axios(config)
+.then(function(response) {
+      console.log(JSON.stringify(response.data));
+      
+        window.sessionStorage.removeItem("auth_token");
+        
+        navigate("/");
+      
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+
+  }
+
+
+
+
   const navigate=useNavigate();
   return (
     <div >
@@ -19,8 +50,8 @@ function NavBar() {
       
        
 </ul>
-
-<button  className='dugmeodjava' onClick={()=>navigate('/')}>odjavi se</button> 
+<button  className='dugmeodjava' onClick={handleLogout}>odjavi se</button>
+{/*<button  className='dugmeodjava' onClick={()=>navigate('/')}>odjavi se</button> */}
 </nav>
   
 

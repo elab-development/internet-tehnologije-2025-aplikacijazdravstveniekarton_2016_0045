@@ -1,6 +1,6 @@
 import React from 'react'
 
-const OneAnaliza = (analiza) => {
+const OneAnaliza = ({analiza}) => {
   return (
     <div className="oneelement">
         

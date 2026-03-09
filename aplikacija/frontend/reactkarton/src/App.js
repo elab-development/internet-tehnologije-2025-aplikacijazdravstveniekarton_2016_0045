@@ -21,12 +21,21 @@ import NavBar from './komponente/NavBar';
 
 import HomeAdmin from './komponente/HomeAdmin';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
 
 
 
 function App() {
+  const [ token , setToken] = useState();
+
+  
+function addToken(auth_token){
+    setToken(auth_token);
+  } 
+
+
   return (
-    
+   
 <div  >
 
 <BrowserRouter>
@@ -35,7 +44,7 @@ function App() {
         <Route
           path="/"
           element={
-            <Prijava  />
+            <Prijava addToken={addToken} />
           }
         />
         <Route
@@ -77,7 +86,7 @@ function App() {
         <Route
           path="/Analize"
           element={
-            <Analize />
+            <Analize token={token} />
           }
         />
         <Route
