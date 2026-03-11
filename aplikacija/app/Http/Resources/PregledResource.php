@@ -15,7 +15,7 @@ class PregledResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-
+'id'=>$this->id,
                                       'anamneza'=>$this->anamneza,
                                      'dijagnoza'=>$this->dijagnoza,
                                      'datumPregleda'=>$this->datumPregleda,

@@ -15,7 +15,7 @@ class AnalizaResource extends JsonResource
     public function toArray(Request $request): array
         {return [
 
-
+'id'=>$this->id,
  'rezultat'=>$this->rezultat,
  'datumAnalize'=>$this->datumAnalize,
  'izdaoLekar'=>$this->izdaoLekar,

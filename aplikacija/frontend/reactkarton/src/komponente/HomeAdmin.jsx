@@ -1,8 +1,8 @@
 import React from 'react'
-import OnePacijent from './OnePacijent'
+import OneKorisnik from './OneKorisnik'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import  { useState } from 'react';
+import  { useState ,useEffect} from 'react';
 
 function HomeAdmin() {
 
@@ -18,18 +18,46 @@ const [userData, setUserData] = useState({
         uloga: ""
       });
 
+
+ const [userJMBG, setUserJMBG] = useState({
+         id:"",
+      });
+
+
+
+
+const navigate=useNavigate();
+
+const [korisnik , setKorisnik] = useState();
+
+   
+
       
     
+      function handleInputJMBG(e) {
+        
+        let newUserJMBG = userJMBG;
+        newUserJMBG[e.target.name] = e.target.value;
+                setUserJMBG(newUserJMBG);
+      } 
+    
+
       function handleInput(e) {
         
         let newUserData = userData;
         newUserData[e.target.name] = e.target.value;
                 setUserData(newUserData);
-      } 
+      }
+
+
+
+
 
       function handleRegister(e) {
         e.preventDefault();  
-        axios.post("http://127.0.0.1:8000/api/register", userData).then( (res) => {
+        
+        
+        axios.post("http://127.0.0.1:8000/api/register", userData,{'headers' : {'Authorization':"Bearer " +  window.sessionStorage.getItem("auth_token")}}).then( (res) => {
          console.log(res.data);
                
         
@@ -43,14 +71,111 @@ const [userData, setUserData] = useState({
 
 
 
+
+
+
+
+
+function handleUpdate(e) {
+        e.preventDefault(); 
+        console.log("evo");
+        const{id,...restOfData}=userData;
+
+        axios.put(`http://127.0.0.1:8000/api/userupdate/${id}`, restOfData,{'headers' : {'Authorization':"Bearer " +  window.sessionStorage.getItem("auth_token")}}).then( (res) => {
+         console.log(res.data);
+               
+        
+      }
+        )
+        .catch( (e) =>
+           console.log(e));
+      }
+
+
+
+
+
+
+ function handleDelete(e) {
+        e.preventDefault();  
+        
+        
+        axios.delete(`http://127.0.0.1:8000/api/userdelete/${userJMBG.id}`,{'headers' : {'Authorization':"Bearer " +  window.sessionStorage.getItem("auth_token")}}).then( (res) => {
+         console.log(res.data);
+               
+        
+      }
+        )
+        .catch( (e) =>
+           console.log(e));
+      }
+
+
+
+
+
+
+
+ function handlePrikazi(e) {
+        
+          
+e.preventDefault();  
+ axios.get(`http://127.0.0.1:8000/api/users/${userJMBG.id}`,{'headers' : {'Authorization':"Bearer " +  window.sessionStorage.getItem("auth_token")}}).then( (res) => {
+         console.log(res.data);
+        
+        
+              setKorisnik(res.data);
+              
+})
+.catch( (e) =>
+           console.log(e));
+
+}
+
+
+
+
+                 
+  function handleLogout(){
+let config = {
+      method: "post",
+      url: "http://127.0.0.1:8000/api/logout",
+      headers: {
+         Authorization: "Bearer " +  window.sessionStorage.getItem("auth_token"),
+      },
+    };
+
+axios(config)
+.then(function(response) {
+      console.log(JSON.stringify(response.data));
+      
+        window.sessionStorage.removeItem("auth_token");
+        
+        navigate("/");
+      
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+
+  }
+     
+      
+        
+
+
+
+
+
   return (
     <div className='kartica'>
-        <button className='dugme'> Odjavi se</button>
-      <h1 className='centriraj'>Dodavanje novog pacijenta</h1>
+        <button  className='dugmeodjava' onClick={handleLogout}>odjavi se</button>
+      
+<br/>
+<form onSubmit={handleRegister}  className="forma" >
 
-<form onSubmit={handleRegister}  >
-
-
+<h1  className='centriraj'>Dodavanje novog korisnika</h1>
 
         <label>Ime:</label>
         <input type="text" name = "ime" placeholder="ime" onInput={handleInput} />
@@ -77,61 +202,87 @@ const [userData, setUserData] = useState({
 <button type="submit" className='dugme'>SAČUVAJ</button>
 </form>
 
-
-
-****************************************************************************************************************************************************************************************************************************
-      <h1 className='centriraj'>Izmena podataka korisnika</h1>
-      <form action= "submit" >
-        <label>Unesi JMBG korisnika:</label>
-        <input type="text" name = "Unesi JMBG korisnika:" /> 
-         
-<button type="submit" >PRONAĐI</button>       
-        
-      </form>  
-      <OnePacijent/>
-<form>
+<br/>
 
 
 
+
+
+
+
+     
+<form form onSubmit={handleUpdate}  className="forma" >
+<h1 className='centriraj'>Izmena podataka korisnika</h1>
+
+        <label>JMBG:</label>
+        <input type="text" name = "id" placeholder="jmbg" onInput={handleInput}  />
         <label>Ime:</label>
-        <input type="text" name = "Ime" />
+        <input type="text" name = "ime" placeholder="ime" onInput={handleInput} />
         <label>Prezime:</label>
-        <input type="text" name = "Prezime" />
+        <input type="text" name = "prezime" placeholder="prezime" onInput={handleInput} />
         <label>Adresa:</label>
-        <input type="text" name = "Adresa" />
+        <input type="text" name = "adresa" placeholder="adresa" onInput={handleInput} />
         <label>Broj telefona:</label>
-        <input type="text" name = "Broj telefona" />
+        <input type="text" name = "brojTelefona" placeholder="telefon" onInput={handleInput} />
        <br/>
         <label>E mail:</label>
-                <input type="text" name = "Email" />
-        
-        <label>Broj telefona:</label>
-        <input type="text" name = "Broj telefona" />
+                <input type="text" name = "email" placeholder="email" onInput={handleInput} />
+        <label>Datum rodjenja:</label>
+                <input type="text" name = "datumRodjenja" placeholder="datum rodjenja" onInput={handleInput} />
+       
         <label>Uloga:</label>
-        <input type="text" name = "Uloga" />
+        <input type="text" name = "uloga" placeholder="uloga" onInput={handleInput} />
         <label>Password:</label>
-        <input type="text" name = "Password" />
+        <input type="text" name = "password" placeholder="password" onInput={handleInput} />
         <br/>
 
-
+<button type="submit" className='dugme' >SAČUVAJ</button>  
 </form>
-<button type="submit" >SAČUVAJ</button>  
+<br/>
 
 
-****************************************************************************************************************************************************************************************************************************
-         <h1 className='centriraj'>Izbriši korisnika</h1>  
-      <form action= "submit" >
+
+
+
+
+      
+      <form form onSubmit={handleDelete} className="forma" >
+          <h1 className='centriraj'>Izbriši korisnika</h1>  
         <label>Unesi JMBG korisnika:</label>
-        <input type="text" name = "Unesi JMBG korisnika:" /> 
+        <input type="text" name = "id" placeholder="jmbg" onInput={handleInputJMBG}/> 
          
-<button type="submit" >PRONAĐI</button>       
+     <button type="submit" className='dugme'>IZBRIŠI KORISNIKA</button>  
         
       </form>  
-<OnePacijent/>
-<button type="submit" >IZBRIŠI KORISNIKA</button>  
+<br/>
+
+
+
+
+          
+      <form form onSubmit={handlePrikazi} className="forma" >
+        <h1 className='centriraj'>Pronadji korisnika</h1> 
+        <label>Unesi JMBG korisnika:</label>
+        <input type="text" name = "id" placeholder="jmbg" onInput={handleInputJMBG}/> 
+         
+     <button type="submit" className='dugme'>Pronadji KORISNIKA</button>  
+        {korisnik && <OneKorisnik korisnik={korisnik} />}
+      </form>
+
+
+
+
 
 
     </div>
+
+
+
+          
+
+
+
+
   )
 }
 

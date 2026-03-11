@@ -35,6 +35,29 @@ float: right;
  font-size: 40px;
 
 }
+.tabelakorisnik {
+  width: 100%;
+  border-collapse: collapse; 
+  margin-top: 20px;
+}
+.tabelakorisnik th {
+  border: 1px solid #100b0b;
+  color: rgb(12, 57, 89);
+  padding: 8px;
+  text-align: left;
+}
+.crnitext {
+  
+  color: rgb(8, 8, 11);
+  
+  
+}
+.tegettext {
+  
+  color: rgb(12, 57, 89);
+  font-weight: bold;
+  
+}
 .centrirajtext{
 
   text-align: center;

@@ -32,6 +32,7 @@ function App() {
 function addToken(auth_token){
     setToken(auth_token);
   } 
+  
 
 
   return (

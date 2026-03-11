@@ -11,7 +11,14 @@ function OnePacijent(pacijent) {
        <br/>
        <label> DATUM ROĐENJA: </label>  <label>{pacijent.datumRodjenja} </label> 
        <br/>
-       
+       <label> JMBG: </label>  <label>{pacijent.id} </label> 
+       <br/>
+       <label> ULOGA: </label>  <label>{pacijent.uloga} </label> 
+       <br/>
+       <label>EMAIL: </label>  <label>{pacijent.email} </label> 
+       <br/>
+       <label> BROJ TELEFONA: </label>  <label>{pacijent.brojTelefona} </label> 
+      
     </div>
   )
 }

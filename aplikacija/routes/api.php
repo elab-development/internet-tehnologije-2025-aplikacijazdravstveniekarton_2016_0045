@@ -13,12 +13,12 @@ use App\Http\Controllers\API\AuthController;
 
 
 
-Route::post('/register', [AuthController::class, 'register']);
+
 Route::post('/login', [AuthController::class, 'login']);
 
 
 Route::group(['middleware'=>['auth:sanctum']], function(){
-    
+    Route::post('/register', [AuthController::class, 'register']);
     Route::get('/users', [UserController::class, 'index']);
 Route::get('/users/{id}', [UserController::class, 'show']);
 Route::delete('/userdelete/{id}', [UserController::class, 'destroy']);

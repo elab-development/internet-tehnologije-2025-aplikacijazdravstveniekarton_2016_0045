@@ -15,6 +15,7 @@ class UputResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'id'=>$this->id,
                                       'uputZa'=>$this->uputZa,
                                        'datumUputa'=>$this->datumUputa,
                                        'izdaoLekar'=>$this->izdaoLekar,

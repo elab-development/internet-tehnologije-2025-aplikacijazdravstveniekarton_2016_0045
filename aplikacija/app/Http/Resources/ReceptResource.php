@@ -15,7 +15,7 @@ class ReceptResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-
+'id'=>$this->id,
                                        'lekovi'=>$this->lekovi,
                                        'datumIzdavanja'=>$this->datumIzdavanja,
                                         'izdaoLekar'=>$this->izdaoLekar,

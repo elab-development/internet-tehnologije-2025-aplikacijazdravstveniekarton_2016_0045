@@ -67,7 +67,7 @@ class UserController extends Controller
 
          public function update(Request $request,$id)
     {
-        $user=User::find($id);
+        $user=User::findOrFail($id);
  $validator= Validator::make($request->all(),[
         
          'ime' => 'required|string|max:255',
@@ -107,7 +107,7 @@ class UserController extends Controller
             return response()->json('Nije pronadjen korisnik', 404);
 
         $userdelete->delete();
-       // return response()->json("KORISNIK JE OBRISAN");
+        return response()->json("KORISNIK JE OBRISAN");
     }
     }
 }

@@ -5,12 +5,14 @@ const OneAnaliza = ({analiza}) => {
     <div className="oneelement">
         
         
-      <label> REZULTAT: </label>  <label>{analiza.rezultat} </label> 
+      <label className='tegettext'> REZULTAT: </label>  <label>{analiza.rezultat} </label> 
       <br/>
-       <label > DATUM ANALIZE: </label>  <label>{analiza.datumAnalize} </label> 
+       <label className='tegettext'> DATUM ANALIZE: </label>  <label>{analiza.datumAnalize} </label> 
        
        <br/>
-       <label > IZDAO LEKAR: </label>  <label> {analiza.izdaoLekar} </label> 
+       <label className='tegettext'> IZDAO LEKAR: </label>  <label> {analiza.izdaoLekar} </label> 
+       <br/>
+        <label className='tegettext'> ID analize: </label>  <label> {analiza.id} </label> 
        <br/>
 
        
