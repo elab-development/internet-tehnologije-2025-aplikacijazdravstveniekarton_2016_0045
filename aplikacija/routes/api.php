@@ -27,6 +27,7 @@ Route::get('/korisnikoveanalize/{id}',[AnalizaController::class, 'korisnikoveana
 Route::get('/korisnikovabolovanja/{id}',[BolovanjeController::class, 'korisnikovabolovanja'] );
 Route::get('/korisnikovipregledi/{id}',[PregledController::class, 'korisnikovipregledi'] );
 Route::get('/korisnikovirecepti/{id}',[ReceptController::class, 'korisnikovirecepti'] );
+Route::get('/korisnikoviuputi/{id}',[UputController::class, 'korisnikoviuputi'] );
 
 
 Route::get('/analizas', [AnalizaController::class, 'index']);

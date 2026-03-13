@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useState,useEffect } from 'react';
 
-function Uputi() {
+function UputiSestre() {
   const navigate=useNavigate();
    const [uputs , setUputs] = useState();
    const [uputJMBG, setUputJMBG] = useState({
@@ -45,7 +45,7 @@ function handleInputJMBG(e) {
   return (
     <div>
       <NavBar/>
-       <button  className='dugme' onClick={()=>navigate('/AddUput')}>dodaj nov uput</button>  
+       
 <h1 className='centriraj'>UPUTI</h1>
 
       <form onSubmit={handlePrikazi} >
@@ -72,4 +72,4 @@ function handleInputJMBG(e) {
   )
 }
 
-export default Uputi
+export default UputiSestre

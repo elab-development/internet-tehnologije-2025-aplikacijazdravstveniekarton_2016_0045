@@ -7,7 +7,7 @@ import axios from 'axios';
 import { useState,useEffect } from 'react';
 
 
-const Analize = () => {
+const AnalizeSestre = () => {
  const [analizaJMBG, setAnalizaJMBG] = useState({
             user_id:"",
          });
@@ -49,7 +49,7 @@ function handleInputJMBG(e) {
   return (
     <div>
       <NavBar/>
-       <button className='dugme'  onClick={()=>navigate('/AddAnalize')}>dodaj novu analizu</button>  
+        
        <h1 className='centriraj'>ANALIZE</h1>
        
        
@@ -81,4 +81,4 @@ function handleInputJMBG(e) {
   )
 }
 
-export default Analize
+export default AnalizeSestre

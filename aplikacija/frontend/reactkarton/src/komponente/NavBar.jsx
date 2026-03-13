@@ -1,10 +1,11 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
+import { useState,useEffect } from 'react';
 
 
 function NavBar() {
+  const userUloga= window.sessionStorage.getItem("uloga"); 
 
 
   function handleLogout(){
@@ -36,12 +37,15 @@ axios(config)
 
 
   const navigate=useNavigate();
+
+
+if(userUloga == "lekar"){
   return (
-    <div >
+   <div >
       
 <nav className='navbar'>
     <ul >
-<li><a href ='/HomePacijent'>Pocetna stranica</a></li> 
+<li><a href ='/Home'>Pocetna stranica</a></li> 
   <li><a href ='/Pregledi'>Pregledi</a></li> 
       <li><a href ='/Analize'>Analize</a></li> 
       <li><a href ='/Uputi'>Uputi</a></li> 
@@ -53,19 +57,71 @@ axios(config)
 <button  className='dugmeodjava' onClick={handleLogout}>odjavi se</button>
 {/*<button  className='dugmeodjava' onClick={()=>navigate('/')}>odjavi se</button> */}
 </nav>
-  
-
-
-
-        
-
-      
-
-
-
-
-    </div>
+ </div>
   )
+}else if(userUloga == "pacijent"){
+
+ return (
+   <div >
+      
+<nav className='navbar'>
+    <ul >
+<li><a href ='/Home'>Pocetna stranica</a></li> 
+  <li><a href ='/PreglediPacijent'>Pregledi</a></li> 
+      <li><a href ='/AnalizePacijent'>Analize</a></li> 
+      <li><a href ='/UputiPacijent'>Uputi</a></li> 
+       <li><a href ='/BolovanjaPacijent'>Bolovanja</a></li>
+      <li><a href ='/ReceptiPacijent'>Recepti</a></li> 
+      
+       
+</ul>
+<button  className='dugmeodjava' onClick={handleLogout}>odjavi se</button>
+{/*<button  className='dugmeodjava' onClick={()=>navigate('/')}>odjavi se</button> */}
+</nav>
+ </div>
+  )
+
+}else if(userUloga == "sestra"){
+
+
+ return (
+   <div >
+      
+<nav className='navbar'>
+    <ul >
+<li><a href ='/Home'>Pocetna stranica</a></li> 
+  <li><a href ='/PreglediSestre'>Pregledi</a></li> 
+      <li><a href ='/AnalizeSestre'>Analize</a></li> 
+      <li><a href ='/UputiSestre'>Uputi</a></li> 
+       <li><a href ='/BolovanjaSestre'>Bolovanja</a></li>
+      <li><a href ='/ReceptiSestre'>Recepti</a></li> 
+      
+       
+</ul>
+<button  className='dugmeodjava' onClick={handleLogout}>odjavi se</button>
+{/*<button  className='dugmeodjava' onClick={()=>navigate('/')}>odjavi se</button> */}
+</nav>
+ </div>
+  )
+
+
 }
+
+
+
+
+
+
+}
+
+  
+   
+
+   
+
+
+
+
+    
 
 export default NavBar

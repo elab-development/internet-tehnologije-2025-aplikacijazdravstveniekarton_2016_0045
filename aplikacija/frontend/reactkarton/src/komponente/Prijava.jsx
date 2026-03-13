@@ -6,6 +6,10 @@ import { useNavigate } from 'react-router-dom';
 
 
 function Prijava({addToken}) {
+
+
+const userUloga= window.sessionStorage.getItem("uloga"); 
+
   const[userData,setUserData]=useState({
 email: "",
 password: "",
@@ -31,8 +35,15 @@ axios.post("http://127.0.0.1:8000/api/login",userData).then((res)=>
 console.log(res.data);
  if(res.data.success === true){
         window.sessionStorage.setItem("auth_token", res.data.access_token); 
+        window.sessionStorage.setItem("id", res.data.user.id); 
+        window.sessionStorage.setItem("uloga", res.data.user.uloga); 
         addToken( res.data.access_token);
-        navigate('/HomePacijent');
+        if(userUloga === "pacijent" || userUloga === "lekar" || userUloga === "sestra" ){
+             navigate('/Home');
+        }else if(userUloga === "admin"){
+           navigate('/HomeAdmin');
+        }
+        
         
       }
 }

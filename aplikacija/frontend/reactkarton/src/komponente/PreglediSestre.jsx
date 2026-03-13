@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useState,useEffect } from 'react';
 
-function Pregledi() {
+function PreglediSestre() {
   
   const [pregledJMBG, setPregledJMBG] = useState({
               user_id:"",
@@ -46,7 +46,7 @@ function handleInputJMBG(e) {
   return (
     <div>
       <NavBar/>
-       <button  className='dugme' onClick={()=>navigate('/AddPregled')}>dodaj novi pregled</button> 
+     
           <h1 className='centriraj'>PREGLEDI</h1>
          <form  onSubmit={handlePrikazi} >
         <label>Unesi JMBG pacijenta:</label>
@@ -70,4 +70,4 @@ function handleInputJMBG(e) {
   )
 }
 
-export default Pregledi
+export default PreglediSestre

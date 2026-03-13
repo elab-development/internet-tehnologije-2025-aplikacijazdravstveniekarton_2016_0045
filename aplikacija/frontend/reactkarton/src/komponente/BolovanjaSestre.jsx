@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useState,useEffect } from 'react';
 
-function Bolovanja() {
+function BolovanjaSestre() {
   const navigate = useNavigate();
   const [bolovanjes , setBolovanjes] = useState();
   const [bolovanjeJMBG, setBolovanjeJMBG] = useState({
@@ -50,7 +50,7 @@ function handleInputJMBG(e) {
       <NavBar/>
 
      
-       <button  className='dugme' onClick={()=>navigate('/AddBolovanje')}>dodaj novo bolovanje</button> 
+      
 
 <h1 className='centriraj'>BOLOVANJA</h1>
       <form onSubmit={handlePrikazi} >
@@ -77,4 +77,4 @@ function handleInputJMBG(e) {
   )
 }
 
-export default Bolovanja
+export default BolovanjaSestre

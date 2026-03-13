@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useState,useEffect } from 'react';
 
-function Recepti() {
+function ReceptiSestre() {
 
   const [receptJMBG, setReceptJMBG] = useState({
                 user_id:"",
@@ -46,7 +46,7 @@ function handleInputJMBG(e) {
  return (
     <div>
       <NavBar/>
-        <button  className='dugme' onClick={()=>navigate('/AddRecept')}>dodaj nov recept</button> 
+        
 <h1 className='centriraj'>RECEPTI</h1>
       <form onSubmit={handlePrikazi} >
          <label>Unesi JMBG pacijenta:</label>
@@ -71,4 +71,4 @@ function handleInputJMBG(e) {
   )
 }
 
-export default Recepti
+export default ReceptiSestre
