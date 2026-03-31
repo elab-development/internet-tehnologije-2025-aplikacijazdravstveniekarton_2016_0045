@@ -1,6 +1,5 @@
 import React from 'react'
 import OneRecept from './OneRecept'
-import { IoArrowBackCircle } from 'react-icons/io5';
 import NavBar from './NavBar';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -43,7 +42,7 @@ useEffect( () => {
               <h1 className='centriraj'>RECEPTI</h1>
       <div className='kartica'>
               
-                <button  className='dugme' onClick={()=>navigate('/AddRecept')}>dodaj nov recept</button>   
+              
       
        {recepts == null ? <>"Nema recepata"</> : recepts.map( (recept) =>
       (<OneRecept recept={recept} key={recept.id} />

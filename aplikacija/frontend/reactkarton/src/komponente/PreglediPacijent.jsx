@@ -1,6 +1,5 @@
 import React from 'react'
 import OnePregled from './OnePregled'
-import { IoArrowBackCircle } from 'react-icons/io5';
 import NavBar from './NavBar'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -41,7 +40,7 @@ useEffect( () => {
         
             <h1 className='centriraj'>PREGLEDI</h1>
      <div className='kartica'>
-      <button  className='dugme' onClick={()=>navigate('/AddPregled')}>dodaj novi pregled</button>     
+          
        {pregleds == null ? <>"Nema pregleda"</> : pregleds.map( (pregled) =>
       (<OnePregled pregled={pregled} key={pregled.id} />
      )

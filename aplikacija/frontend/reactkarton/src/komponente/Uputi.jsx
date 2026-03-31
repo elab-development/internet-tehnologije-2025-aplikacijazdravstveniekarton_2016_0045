@@ -1,7 +1,5 @@
 import React from 'react'
 import OneUput from './OneUput'
-import { IoArrowBackCircle } from 'react-icons/io5';
-import { BiAlignLeft } from 'react-icons/bi';
 import NavBar from './NavBar';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';

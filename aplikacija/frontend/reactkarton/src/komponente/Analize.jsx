@@ -1,6 +1,5 @@
 import React from 'react'
 import OneAnaliza from './OneAnaliza';
-import { IoArrowBackCircle } from 'react-icons/io5';
 import NavBar from './NavBar';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
