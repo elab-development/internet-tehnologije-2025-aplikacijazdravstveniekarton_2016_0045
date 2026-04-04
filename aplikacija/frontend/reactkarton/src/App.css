@@ -42,7 +42,15 @@ float: right;
 }
 .tabelakorisnik th {
   border: 1px solid #100b0b;
+  background-color: rgba(2, 53, 73, 0.15);
   color: rgb(12, 57, 89);
+  padding: 8px;
+  text-align: left;
+}
+.tabelakorisnik td {
+  border: 1px solid #100b0b;
+  background-color: rgba(2, 53, 73, 0.15);
+  color: rgb(0, 0, 0);
   padding: 8px;
   text-align: left;
 }

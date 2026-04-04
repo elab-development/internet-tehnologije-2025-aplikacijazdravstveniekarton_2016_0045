@@ -3,30 +3,34 @@ import React from 'react'
 function OneKorisnik({korisnik}) {
   return (
     <table className='tabelakorisnik'>
-        <th>
-      <th>IME: <br></br> <label className='crnitext'>{korisnik.ime} </label></th>   
-       
-
-       <th> PREZIME:<br></br><label className='crnitext'> {korisnik.prezime}</label></th> 
-       
- 
-       <th>ADRESA:<br></br> <label className='crnitext'>{korisnik.adresa}</label></th> 
-       
- 
-       <th> DATUM ROĐENJA: <br></br><label className='crnitext'>{korisnik.datumRodjenja} </label></th> 
+      <thead>
+      <tr>
         
+      <th> IME: </th> 
+       <th> PREZIME: </th>
+       <th>ADRESA: </th> 
+        <th>  DATUM ROĐENJA: </th> 
+        <th>  JMBG: </th> 
+        <th> ULOGA:  </th> 
+        <th> EMAIL:  </th> 
+        <th>  BROJ TELEFONA: </th> 
+      </tr>
+      </thead>
+<tbody>
+  <tr>
+<td > {korisnik.ime} </td>
+<td > {korisnik.prezime}</td>
+<td > {korisnik.adresa}</td>
+<td > {korisnik.datumRodjenja} </td>
+<td > {korisnik.id} </td>
+<td > {korisnik.uloga}</td>
+<td > {korisnik.email} </td>
+ <td > {korisnik.brojTelefona}</td> 
+</tr>
+</tbody>
 
-       <th> JMBG: <br></br><label className='crnitext'>{korisnik.id} </label></th> 
-        
 
-       <th> ULOGA: <br></br><label className='crnitext'>{korisnik.uloga}</label></th>  
-       
 
-       <th>EMAIL: <br></br><label className='crnitext'>{korisnik.email} </label></th> 
-        
-
-       <th> BROJ TELEFONA:<br></br> <label className='crnitext'>{korisnik.brojTelefona} </label></th>  
-      </th>
     </table>
   )
 }
