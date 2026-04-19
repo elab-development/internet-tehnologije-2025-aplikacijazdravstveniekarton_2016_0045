@@ -25,11 +25,18 @@ e.preventDefault();
          console.log(res.data);
         
         
+                if(res.data.length === 0){
+          alert("Nije pronadjen pacijent, pogresan jmbg!")
+        }else {
+        
               setBolovanjes(res.data);
+        } 
               
 })
-.catch( (e) =>
-           console.log(e));
+.catch( (e) =>{
+           console.log(e)
+           alert("Pogresan unos,pokusajte ponovo!");
+})
 
 }
 

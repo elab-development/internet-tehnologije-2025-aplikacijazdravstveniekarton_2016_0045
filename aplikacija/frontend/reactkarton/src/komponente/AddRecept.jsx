@@ -27,10 +27,15 @@ const [receptData, setReceptData] = useState({
                 axios.post("http://127.0.0.1:8000/api/addrecept",receptData,{'headers' : {'Authorization':"Bearer " +  window.sessionStorage.getItem("auth_token")}}).then((res)=> {
                
          console.log(res.data);
+         alert("Recept je uspesno kreiran!");   
                
         
       }
         )
+         .catch( (e) =>{
+           console.log(e)
+           alert("Pogresan unos,pokusajte ponovo!");
+})
       } 
 
 
@@ -48,7 +53,7 @@ const [receptData, setReceptData] = useState({
         <input type="text" name = "lekovi" onInput={handleInput} />
 
          <label>Datum izdavanja:</label>
-        <input type="text" name = "datumIzdavanja" onInput={handleInput} />
+        <input type="text" name = "datumIzdavanja" placeholder="godina-mesec-dan primer: 2020-01-22" onInput={handleInput} />
 
        
 

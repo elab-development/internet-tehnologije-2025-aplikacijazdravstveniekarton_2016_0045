@@ -29,9 +29,13 @@ const [bolovanjeData, setBolovanjeData] = useState({
                
          console.log(res.data);
                
-        
+        alert("Bolovanje je uspesno kreirano!"); 
       }
         )
+         .catch( (e) =>{
+           console.log(e)
+           alert("Pogresan unos,pokusajte ponovo!");
+})
       } 
 
 
@@ -43,10 +47,10 @@ const [bolovanjeData, setBolovanjeData] = useState({
       <h1 className='centriraj'>Kreiraj bolovanje</h1>
       <form onSubmit={handleDodavanje}  className="forma">
         <label>Datum od:</label>
-        <input type="text" name = "datumOd" onInput={handleInput} />
+        <input type="text" name = "datumOd" placeholder="godina-mesec-dan primer: 2020-01-22" onInput={handleInput} />
 
          <label>Datum do:</label>
-        <input type="text" name = "datumDo"  onInput={handleInput} />
+        <input type="text" name = "datumDo" placeholder="godina-mesec-dan primer: 2020-01-22" onInput={handleInput} />
 
         <label>Dijagnoza:</label>
         <input type="text" name = "dijagnoza" onInput={handleInput}  />

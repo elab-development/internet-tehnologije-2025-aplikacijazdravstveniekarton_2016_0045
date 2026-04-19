@@ -28,10 +28,15 @@ const [pregledData, setPregledData] = useState({
                 axios.post("http://127.0.0.1:8000/api/addpregled",pregledData,{'headers' : {'Authorization':"Bearer " +  window.sessionStorage.getItem("auth_token")}}).then((res)=> {
                
          console.log(res.data);
+         alert("Pregled je uspesno kreiran!");  
                
         
       }
         )
+         .catch( (e) =>{
+           console.log(e)
+           alert("Pogresan unos,pokusajte ponovo!");
+})
       } 
 
 
@@ -48,7 +53,7 @@ const [pregledData, setPregledData] = useState({
         <input type="text" name = "dijagnoza" onInput={handleInput} />
 
          <label>Datum pregleda:</label>
-        <input type="text" name = "datumPregleda" onInput={handleInput} />
+        <input type="text" name = "datumPregleda" placeholder="godina-mesec-dan primer: 2020-01-22" onInput={handleInput} />
 
         
         <label>Pregledao Lekar:</label>

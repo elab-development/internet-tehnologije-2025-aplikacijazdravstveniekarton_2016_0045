@@ -59,12 +59,14 @@ const [korisnik , setKorisnik] = useState();
         
         axios.post("http://127.0.0.1:8000/api/register", userData,{'headers' : {'Authorization':"Bearer " +  window.sessionStorage.getItem("auth_token")}}).then( (res) => {
          console.log(res.data);
-               
+            alert("Uspesno je dodat novi korisnik!");      
         
       }
         )
-        .catch( (e) =>
-           console.log(e));
+          .catch( (e) =>{
+           console.log(e)
+           alert("Pogresan unos,pokusajte ponovo!");
+})
       }
 
 
@@ -83,12 +85,14 @@ function handleUpdate(e) {
 
         axios.put(`http://127.0.0.1:8000/api/userupdate/${id}`, restOfData,{'headers' : {'Authorization':"Bearer " +  window.sessionStorage.getItem("auth_token")}}).then( (res) => {
          console.log(res.data);
-               
+          alert("Korisnik je azuriran!");      
         
       }
         )
-        .catch( (e) =>
-           console.log(e));
+        .catch( (e) =>{
+           console.log(e)
+           alert("Pogresan unos,pokusajte ponovo!");
+})
       }
 
 
@@ -102,12 +106,14 @@ function handleUpdate(e) {
         
         axios.delete(`http://127.0.0.1:8000/api/userdelete/${userJMBG.id}`,{'headers' : {'Authorization':"Bearer " +  window.sessionStorage.getItem("auth_token")}}).then( (res) => {
          console.log(res.data);
-               
+           alert("Korisnik je obrisan!");      
         
       }
         )
-        .catch( (e) =>
-           console.log(e));
+        .catch( (e) =>{
+           console.log(e)
+           alert("Pogresan unos,pokusajte ponovo!");
+})
       }
 
 
@@ -124,11 +130,18 @@ e.preventDefault();
          console.log(res.data);
         
         
+              if(res.data.length === 0){
+          alert("Nije pronadjen pacijent, pogresan jmbg!")
+        }else {
+        
               setKorisnik(res.data);
+        } 
               
 })
-.catch( (e) =>
-           console.log(e));
+.catch( (e) =>{
+           console.log(e)
+           alert("Pogresan unos,pokusajte ponovo!");
+})
 
 }
 

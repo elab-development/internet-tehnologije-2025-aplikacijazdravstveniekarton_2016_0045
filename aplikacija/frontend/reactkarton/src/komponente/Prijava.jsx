@@ -48,9 +48,13 @@ console.log(res.data);
       }
 }
 )
-.catch( (e) =>
-       console.log(e));
-
+.catch( (e) =>{
+ console.log(e)
+  
+       alert("Pogresan unos,pokusajte ponovo!");
+       
+  }
+)
 
   }
   return (

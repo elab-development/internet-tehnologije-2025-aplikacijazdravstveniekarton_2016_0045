@@ -27,10 +27,15 @@ const [uputData, setUputData] = useState({
                 axios.post("http://127.0.0.1:8000/api/adduput",uputData,{'headers' : {'Authorization':"Bearer " +  window.sessionStorage.getItem("auth_token")}}).then((res)=> {
                
          console.log(res.data);
+         alert("Uput je uspesno kreiran!");  
                
         
       }
         )
+         .catch( (e) =>{
+           console.log(e)
+           alert("Pogresan unos,pokusajte ponovo!");
+})
       } 
 
   return (
@@ -43,7 +48,7 @@ const [uputData, setUputData] = useState({
         <input type="text" name = "uputZa" onInput={handleInput} />
 
          <label>Datum uputa:</label>
-        <input type="text" name = "datumUputa" onInput={handleInput} />
+        <input type="text" name = "datumUputa" placeholder="godina-mesec-dan primer: 2020-01-22" onInput={handleInput} />
 
         
         <label>Izdao Lekar:</label>
