@@ -11,39 +11,39 @@ Sistem digitalnog zdravstvenog kartona namenjen pacijentima i medicinskom osoblj
 
 ---
 
-## Pokretanje aplikacije
+# Pokretanje aplikacije
 
-# Ulazak u backend folder
+## Ulazak u backend folder
 
 cd backend
 
-# Instalacija PHP zavisnosti
+## Instalacija PHP zavisnosti
 
 composer install
 
-# Kopiranje konfiguracionog fajla i generisanje ključa
+## Kopiranje konfiguracionog fajla i generisanje ključa
 
 cp .env.example .env
 php artisan key:generate
 
-# Pokretanje migracija i punjenje baze
+## Pokretanje migracija i punjenje baze
 
 php artisan db --seed
 
-# Pokretanje servera
+## Pokretanje servera
 
 php artisan serve
 
-# Ulazak u frontend folder
+## Ulazak u frontend folder
 
 cd frontend
 cd reactkarton
 
-# Instalacija paketa
+## Instalacija paketa
 
 npm install
 
-# Pokretanje React aplikacije u razvojnom modu
+## Pokretanje React aplikacije u razvojnom modu
 
 npm start
 
@@ -55,7 +55,7 @@ Nakon podizanja:
 ​Backend API će biti dostupan na: http://localhost:8000
 API dokumentaciju (Swagger UI) možete pogledati na: http://localhost:8000/api/documentation
 
-## Pokretanje aplikacije pomoću Dockera
+# Pokretanje aplikacije pomoću Dockera
 
 Ako imate instaliran Docker i Docker Compose, ceo sistem (Laravel, React i bazu) možete podići sledecim komandama iz glavnog foldera:
 
