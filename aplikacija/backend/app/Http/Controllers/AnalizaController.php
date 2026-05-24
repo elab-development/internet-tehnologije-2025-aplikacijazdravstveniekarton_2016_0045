@@ -8,6 +8,47 @@ use Illuminate\Http\Request;
 use App\Http\Resources\AnalizaResource;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
+use OpenApi\Attributes as OA;
+
+
+#[OA\Get(
+    path: '/analizas/{id}',
+    summary: 'Prikaz svih analiza pacijenta ',
+    tags: ['Analize'],
+    parameters: [
+        new OA\Parameter(
+            name: 'id',
+            in: 'path',
+            required: true,
+            description: 'JMBG pacijenta',
+            schema: new OA\Schema(type: 'string')
+        )
+    ],
+    responses: [
+        
+        new OA\Response(
+            response: 404,
+            description: 'Nisu pronadjene analize'
+        )
+    ]
+)]
+
+#[OA\Post(
+    path: '/addanaliza',
+    summary: 'Kreiranje nove analize',
+    tags: ['Analize'],
+    
+    responses: [
+        new OA\Response(
+            response: 200,
+            description: 'Uspesno dodata analiza!'
+        ),
+        new OA\Response(
+            response: 404,
+            description: 'Greska!'
+        )
+    ]
+)]
 
 
 class AnalizaController extends Controller

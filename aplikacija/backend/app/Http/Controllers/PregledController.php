@@ -8,6 +8,46 @@ use Illuminate\Http\Request;
 use App\Http\Resources\PregledResource;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
+use OpenApi\Attributes as OA;
+
+#[OA\Get(
+    path: '/pregleds/{id}',
+    summary: 'Prikaz svih pregleda pacijenta ',
+    tags: ['Pregledi'],
+    parameters: [
+        new OA\Parameter(
+            name: 'id',
+            in: 'path',
+            required: true,
+            description: 'JMBG pacijenta',
+            schema: new OA\Schema(type: 'string')
+        )
+    ],
+    responses: [
+        
+        new OA\Response(
+            response: 404,
+            description: 'Nisu pronadjeni pregledi'
+        )
+    ]
+)]
+
+#[OA\Post(
+    path: '/addpregled',
+    summary: 'Kreiranje novog pregleda',
+    tags: ['Pregledi'],
+    
+    responses: [
+        new OA\Response(
+            response: 200,
+            description: 'Uspesno dodat pregled!'
+        ),
+        new OA\Response(
+            response: 404,
+            description: 'Greska!'
+        )
+    ]
+)]
 
 class PregledController extends Controller
 {

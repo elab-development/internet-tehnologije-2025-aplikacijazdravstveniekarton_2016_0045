@@ -8,6 +8,46 @@ use Illuminate\Http\Request;
 use App\Http\Resources\UputResource;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
+use OpenApi\Attributes as OA;
+
+#[OA\Get(
+    path: '/uputs/{id}',
+    summary: 'Prikaz svih uputa pacijenta ',
+    tags: ['Uputi'],
+    parameters: [
+        new OA\Parameter(
+            name: 'id',
+            in: 'path',
+            required: true,
+            description: 'JMBG pacijenta',
+            schema: new OA\Schema(type: 'string')
+        )
+    ],
+    responses: [
+        
+        new OA\Response(
+            response: 404,
+            description: 'Nisu pronadjeni uputi'
+        )
+    ]
+)]
+
+#[OA\Post(
+    path: '/adduput',
+    summary: 'Kreiranje novog uputa',
+    tags: ['Uputi'],
+    
+    responses: [
+        new OA\Response(
+            response: 200,
+            description: 'Uspesno dodat uput!'
+        ),
+        new OA\Response(
+            response: 404,
+            description: 'Greska!'
+        )
+    ]
+)]
 
 class UputController extends Controller
 {

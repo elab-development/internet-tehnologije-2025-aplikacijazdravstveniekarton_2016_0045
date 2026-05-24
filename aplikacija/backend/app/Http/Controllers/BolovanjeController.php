@@ -8,6 +8,46 @@ use Illuminate\Http\Request;
 use App\Http\Resources\BolovanjeResource;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
+use OpenApi\Attributes as OA;
+
+#[OA\Get(
+    path: '/bolovanjes/{id}',
+    summary: 'Prikaz svih bolovanja pacijenta ',
+    tags: ['Bolovanja'],
+    parameters: [
+        new OA\Parameter(
+            name: 'id',
+            in: 'path',
+            required: true,
+            description: 'JMBG pacijenta',
+            schema: new OA\Schema(type: 'string')
+        )
+    ],
+    responses: [
+        
+        new OA\Response(
+            response: 404,
+            description: 'Nisu pronadjena bolovanja'
+        )
+    ]
+)]
+
+#[OA\Post(
+    path: '/addbolovanje',
+    summary: 'Kreiranje novog bolovanja',
+    tags: ['Bolovanja'],
+    
+    responses: [
+        new OA\Response(
+            response: 200,
+            description: 'Uspesno dodato bolovanje!'
+        ),
+        new OA\Response(
+            response: 404,
+            description: 'Greska!'
+        )
+    ]
+)]
 
 class BolovanjeController extends Controller
 {

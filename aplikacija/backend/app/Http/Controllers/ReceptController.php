@@ -8,6 +8,46 @@ use Illuminate\Http\Request;
 use App\Http\Resources\ReceptResource;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
+use OpenApi\Attributes as OA;
+
+#[OA\Get(
+    path: '/recepts/{id}',
+    summary: 'Prikaz svih recepata pacijenta ',
+    tags: ['Recepti'],
+    parameters: [
+        new OA\Parameter(
+            name: 'id',
+            in: 'path',
+            required: true,
+            description: 'JMBG pacijenta',
+            schema: new OA\Schema(type: 'string')
+        )
+    ],
+    responses: [
+        
+        new OA\Response(
+            response: 404,
+            description: 'Nisu pronadjeni recepti'
+        )
+    ]
+)]
+
+#[OA\Post(
+    path: '/addrecept',
+    summary: 'Kreiranje novog recepta',
+    tags: ['Recepti'],
+    
+    responses: [
+        new OA\Response(
+            response: 200,
+            description: 'Uspesno dodat recept!'
+        ),
+        new OA\Response(
+            response: 404,
+            description: 'Greska!'
+        )
+    ]
+)]
 
 class ReceptController extends Controller
 {

@@ -7,6 +7,78 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Validator;
+use OpenApi\Attributes as OA;
+
+#[OA\Get(
+    path: '/users/{id}',
+    summary: 'Prikaz podataka korisnika ',
+    tags: ['Korisnici'],
+    parameters: [
+        new OA\Parameter(
+            name: 'id',
+            in: 'path',
+            required: true,
+            description: 'JMBG korisnika',
+            schema: new OA\Schema(type: 'string')
+        )
+    ],
+    responses: [
+        
+        new OA\Response(
+            response: 404,
+            description: 'Nije pronadjen korisnik'
+        )
+    ]
+)]
+
+#[OA\Put(
+    path: '/userupdate/{id}',
+    summary: 'Izmena podataka korisnika',
+    tags: ['Korisnici'],
+    parameters: [
+        new OA\Parameter(
+            name: 'id',
+            in: 'path',
+            required: true,
+            description: 'JMBG korisnika',
+            schema: new OA\Schema(type: 'string')
+        )
+    ],
+    responses: [
+        new OA\Response(
+            response: 200,
+            description: 'Uspesno azuriran korisnik!'
+        ),
+        new OA\Response(
+            response: 404,
+            description: 'Greska!'
+        )
+    ]
+)]
+#[OA\Delete(
+    path: '/userdelete/{id}',
+    summary: 'Brisanje korisnika',
+    tags: ['Korisnici'],
+    parameters: [
+        new OA\Parameter(
+            name: 'id',
+            in: 'path',
+            required: true,
+            description: 'JMBG korisnika',
+            schema: new OA\Schema(type: 'string')
+        )
+    ],
+    responses: [
+        new OA\Response(
+            response: 200,
+            description: 'Korisnik je obrisan!'
+        ),
+        new OA\Response(
+            response: 404,
+            description: 'Nije pronadjen korisnik!'
+        )
+    ]
+)]
 
 class UserController extends Controller
 {

@@ -1,0 +1,333 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Moj Laravel API",
+        "description": "Dokumentacija za moj React/Laravel projekat",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000/api",
+            "description": "Lokalni razvojni server"
+        }
+    ],
+    "paths": {
+        "/analizas/{id}": {
+            "get": {
+                "tags": [
+                    "Analize"
+                ],
+                "summary": "Prikaz svih analiza pacijenta ",
+                "operationId": "ed67884ad5eb2e38bf04dcd5bde70f16",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "JMBG pacijenta",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "Nisu pronadjene analize"
+                    }
+                }
+            }
+        },
+        "/addanaliza": {
+            "post": {
+                "tags": [
+                    "Analize"
+                ],
+                "summary": "Kreiranje nove analize",
+                "operationId": "7c200fa57f33ed4ca012cc256a7d3248",
+                "responses": {
+                    "200": {
+                        "description": "Uspesno dodata analiza!"
+                    },
+                    "404": {
+                        "description": "Greska!"
+                    }
+                }
+            }
+        },
+        "/bolovanjes/{id}": {
+            "get": {
+                "tags": [
+                    "Bolovanja"
+                ],
+                "summary": "Prikaz svih bolovanja pacijenta ",
+                "operationId": "4f621c014c9e0ac8b901ed175efbba10",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "JMBG pacijenta",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "Nisu pronadjena bolovanja"
+                    }
+                }
+            }
+        },
+        "/addbolovanje": {
+            "post": {
+                "tags": [
+                    "Bolovanja"
+                ],
+                "summary": "Kreiranje novog bolovanja",
+                "operationId": "17b074bbd814b2223849002cd7d1e080",
+                "responses": {
+                    "200": {
+                        "description": "Uspesno dodato bolovanje!"
+                    },
+                    "404": {
+                        "description": "Greska!"
+                    }
+                }
+            }
+        },
+        "/pregleds/{id}": {
+            "get": {
+                "tags": [
+                    "Pregledi"
+                ],
+                "summary": "Prikaz svih pregleda pacijenta ",
+                "operationId": "d71f49b075a7c11dd85feef06ca7ff1a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "JMBG pacijenta",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "Nisu pronadjeni pregledi"
+                    }
+                }
+            }
+        },
+        "/addpregled": {
+            "post": {
+                "tags": [
+                    "Pregledi"
+                ],
+                "summary": "Kreiranje novog pregleda",
+                "operationId": "06bde3ce813a90a20ea0e19cf789a3f3",
+                "responses": {
+                    "200": {
+                        "description": "Uspesno dodat pregled!"
+                    },
+                    "404": {
+                        "description": "Greska!"
+                    }
+                }
+            }
+        },
+        "/recepts/{id}": {
+            "get": {
+                "tags": [
+                    "Recepti"
+                ],
+                "summary": "Prikaz svih recepata pacijenta ",
+                "operationId": "df4a2c39e0a4db2af02bde4c64d348d5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "JMBG pacijenta",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "Nisu pronadjeni recepti"
+                    }
+                }
+            }
+        },
+        "/addrecept": {
+            "post": {
+                "tags": [
+                    "Recepti"
+                ],
+                "summary": "Kreiranje novog recepta",
+                "operationId": "27ee6eede5a062c1795e2c491d3b5926",
+                "responses": {
+                    "200": {
+                        "description": "Uspesno dodat recept!"
+                    },
+                    "404": {
+                        "description": "Greska!"
+                    }
+                }
+            }
+        },
+        "/uputs/{id}": {
+            "get": {
+                "tags": [
+                    "Uputi"
+                ],
+                "summary": "Prikaz svih uputa pacijenta ",
+                "operationId": "236c603b1c03ec4b1c291960c67d1c3b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "JMBG pacijenta",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "Nisu pronadjeni uputi"
+                    }
+                }
+            }
+        },
+        "/adduput": {
+            "post": {
+                "tags": [
+                    "Uputi"
+                ],
+                "summary": "Kreiranje novog uputa",
+                "operationId": "74e97c8d937c0c1d845d2ba92db36a0f",
+                "responses": {
+                    "200": {
+                        "description": "Uspesno dodat uput!"
+                    },
+                    "404": {
+                        "description": "Greska!"
+                    }
+                }
+            }
+        },
+        "/users/{id}": {
+            "get": {
+                "tags": [
+                    "Korisnici"
+                ],
+                "summary": "Prikaz podataka korisnika ",
+                "operationId": "0165148e426af3757f1e7fd1f298210f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "JMBG korisnika",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "Nije pronadjen korisnik"
+                    }
+                }
+            }
+        },
+        "/userupdate/{id}": {
+            "put": {
+                "tags": [
+                    "Korisnici"
+                ],
+                "summary": "Izmena podataka korisnika",
+                "operationId": "112e754213f8efb91bc28934cba6625f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "JMBG korisnika",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Uspesno azuriran korisnik!"
+                    },
+                    "404": {
+                        "description": "Greska!"
+                    }
+                }
+            }
+        },
+        "/userdelete/{id}": {
+            "delete": {
+                "tags": [
+                    "Korisnici"
+                ],
+                "summary": "Brisanje korisnika",
+                "operationId": "93b22584cbc7b98021f084d34c4ac45e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "JMBG korisnika",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Korisnik je obrisan!"
+                    },
+                    "404": {
+                        "description": "Nije pronadjen korisnik!"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Analize",
+            "description": "Analize"
+        },
+        {
+            "name": "Bolovanja",
+            "description": "Bolovanja"
+        },
+        {
+            "name": "Pregledi",
+            "description": "Pregledi"
+        },
+        {
+            "name": "Recepti",
+            "description": "Recepti"
+        },
+        {
+            "name": "Uputi",
+            "description": "Uputi"
+        },
+        {
+            "name": "Korisnici",
+            "description": "Korisnici"
+        }
+    ]
+}
